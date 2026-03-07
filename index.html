@@ -3,103 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ملفي الشخصي | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <title>Portfolio | ملفي الشخصي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        /* تعريف الألوان المتغيرة */
+        /* --- Style: التنسيق الجمالي --- */
         :root {
-            --bg-color: #fff0f5; /* وردي فاتح جداً للوضع النهاري */
-            --text-color: #4a4a4a;
-            --accent-color: #ffb6c1; /* وردي متوسط */
+            --bg-body: #fff0f5; /* وردي فاتح جداً نهاراً */
             --card-bg: #ffffff;
-            --button-text: #ffffff;
+            --text-main: #4a4a4a;
+            --accent: #ffb6c1; /* وردي ناعم للأزرار */
+            --shadow: rgba(0, 0, 0, 0.05);
         }
 
         [data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #ffc0cb; /* نص وردي فاتح في الوضع الليلي */
-            --accent-color: #ff69b4;
-            --card-bg: #2d2d2d;
+            --bg-body: #121212; /* أسود هادئ ليلاً */
+            --card-bg: #1e1e1e;
+            --text-main: #ffd1dc; /* نص وردي باهت لراحة العين */
+            --accent: #ff69b4;
+            --shadow: rgba(0, 0, 0, 0.3);
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: all 0.3s ease;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
+            transition: background 0.4s ease;
         }
 
-        .container {
-            text-align: center;
+        /* زر تبديل الوضع */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
             background: var(--card-bg);
-            padding: 40px;
+            border: 1px solid var(--accent);
+            color: var(--text-main);
+            padding: 8px 15px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 400px;
-            width: 90%;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid var(--accent-color);
-            margin-bottom: 20px;
+        /* البطاقة التعريفية (نفس ستايل سهى) */
+        .profile-card {
+            background: var(--card-bg);
+            width: 350px;
+            padding: 40px 20px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
-        h1 { margin: 10px 0; font-size: 24px; }
-        p { font-size: 16px; line-height: 1.6; opacity: 0.8; }
-
-        .social-links {
-            margin-top: 25px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            font-size: 24px;
-            transition: transform 0.3s;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
+        .profile-card:hover {
             transform: translateY(-5px);
         }
 
-        /* زر التبديل */
-        .theme-switch {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            cursor: pointer;
-            background: var(--accent-color);
-            color: var(--button-text);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 50px;
-            font-weight: bold;
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            color: white;
+            overflow: hidden;
+        }
+
+        h1 { margin: 10px 0; font-size: 22px; }
+        p { font-size: 14px; opacity: 0.8; margin-bottom: 25px; }
+
+        /* روابط التواصل الاجتماعي */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-main);
+            background: var(--bg-body);
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .link-item i { margin-left: 10px; font-size: 18px; }
+
+        .link-item:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
         }
     </style>
 </head>
 <body>
 
-    <button class="theme-switch" onclick="toggleTheme()" id="themeBtn">
-        <i class="fas fa-moon"></i> الوضع الليلي
+    <button class="theme-toggle" onclick="toggleMode()" id="modeBtn">
+        <i class="fas fa-moon"></i> وضع الليل
     </button>
 
-    <div class="container">
-        <img src="https://via.placeholder.com/120" alt="صورة شخصية" class="profile-img">
-        
-        <h1>اسمي هنا</h1>
-        <p>مصممة ومطورة مواقع | شغوفة ببناء تجارب مستخدم جميلة وبسيطة.</p>
+    <div class="profile-card">
+        <div class="avatar">
+            <i class="fas fa-user"></i>
+        </div>
 
-        <div class="social-links">
+        <h1>اسمك هنا</h1>
+        <p>مصممة ومطورة واجهات | مهتمة بالتفاصيل الجميلة</p>
+
+        <div class="links-container">
+            <a href="https://linkedin.com/in/YOUR_USER" class="link-item" target="_blank">
+                <i class="fab fa-linkedin"></i> لينكد إن
+            </a>
+
+            <a href="mailto:yourname@email.com" class="link-item">
+                <i class="fas fa-envelope"></i> البريد الإلكتروني
+            </a>
+
+            <a href="https://x.com/YOUR_USER" class="link-item" target="_blank">
+                <i class="fab fa-x-twitter"></i> منصة إكس
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMode() {
+            const body = document.documentElement;
+            const btn = document.getElementById('modeBtn');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                btn.innerHTML = '<i class="fas fa-moon"></i> وضع الليل';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.innerHTML = '<i class="fas fa-sun"></i> وضع النهار';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // حفظ خيار المستخدم عند تحديث الصفحة
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('modeBtn').innerHTML = '<i class="fas fa-sun"></i> وضع النهار';
+        }
+    </script>
+</body>
+</html>
