@@ -1,92 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Shop</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>معرض أعمالي | Portfolio</title>
+    <!-- استدعاء خط Cairo من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- استدعاء مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* تعريف المتغيرات للألوان (الوضع النهاري الافتراضي) */
+        :root {
+            --bg-color: #f4f7f6;       /* خلفية نهارية هادئة (رمادي مائل للأخضر الفاتح) */
+            --card-bg: #ffffff;        /* خلفية البطاقات (أبيض) */
+            --text-color: #2c3e50;     /* لون النص (كحلي غامق) */
+            --accent-color: #607d8b;   /* اللون الأساسي (أزرق رمادي - Sage) */
+            --secondary-color: #e0e0e0; /* لون ثانوي للفواصل */
+            --shadow: 0 4px 15px rgba(0,0,0,0.05); /* ظل ناعم */
+            --transition: all 0.4s ease; /* سرعة الانتقال */
+        }
+
+        /* تعريف متغيرات الوضع الليلي */
+        [data-theme="dark"] {
+            --bg-color: #1a1a2e;       /* خلفية ليلية داكنة */
+            --card-bg: #16213e;        /* خلفية البطاقات */
+            --text-color: #e0e0e0;     /* لون نص فاتح */
+            --accent-color: #4db6ac;   /* لون مميز (أخضر مائي) */
+            --secondary-color: #2c3e50;
+            --shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        /* تنسيق الهيدر */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        /* زر تبديل الوضع */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--accent-color);
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent-color);
+            color: var(--card-bg);
+        }
+
+        /* تنسيق القسم الرئيسي */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        /* تنسيق البطاقات (للعرض أو المشاريع) */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        /* تنسيق أزرار التواصل */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: var(--transition);
+            color: var(--card-bg);
+        }
+
+        .btn-email {
+            background-color: var(--accent-color);
+        }
+
+        .btn-linkedin {
+            background-color: #0077b5; /* لون لينكدان الرسمي */
+        }
+
+        .social-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        /* الفوتر */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* استجابة الشاشة */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .social-links { flex-direction: column; align-items: center; }
+        }
+    </style>
 </head>
 <body>
-    <div class="main">
-        <div class="navbar">
-            
-            <h2 class="logo">F<span>D</span></h2>
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-            </label>
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="products.html">PRODUCTS</a></li>
-                <li><a href="contact.html">CONTACT US</a></li>
-            </ul>
 
-                <div class="search-bar">
-                    <input type="text" placeholder=" Search...">
-                    <button type="submit" class="login">Login</button>
-                    <button><i class="fa fa-search"></i></button>
-                </div>
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">اسمك هنا</div>
+        <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i> الوضع الليلي
+        </button>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero">
+        <h1>مرحباً، أنا [اسمك]</h1>
+        <p>مصمم ومطور ويب شغوف، أسعى دائماً لتقديم حلول برمجية عملية وأنيقة. متخصص في بناء واجهات مستخدم سهلة الاستخدام.</p>
+        
+        <!-- أزرار التواصل -->
+        <div class="social-links">
+            <a href="mailto:your-email@example.com" class="social-btn btn-email">
+                <i class="fas fa-envelope"></i>
+                <span>البريد الإلكتروني</span>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-btn btn-linkedin">
+                <i class="fab fa-linkedin-in"></i>
+                <span>LinkedIn</span>
+            </a>
         </div>
+    </section>
 
-        <div class="container">
-            <label for="" class="icon-close"><i class="fa fa-times" aria-hidden="true"></i></label>
-
-            <div class="card">
-                <h3>Login</h3>
-                <form action="#">
-                    <div class="input-card">
-                        <span class="icon">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                        </span>
-                        <input type="email" required>
-                        <label>Email</label>
-                    </div>
-                    <div class="input-card">
-                        <span class="icon">
-                            <i class="fa fa-lock" aria-hidden="true"></i>
-                        </span>
-                        <input type="password" required>
-                        <label>Password</label>
-                    </div>
-                    <div class="remember-me">
-                        <label><input type="checkbox">Remember me</label>
-                        <a href="#">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="btn-login">Login</button>
-                </form>
-            </div>
-        </div> 
-
-        <div class="main-section">
-            <h1 class="fdel">FLORAL <span>DELIGHTS</span></h1>
-            <p class="sen">"Our love for flowers blossomed into a passion for creating stunning <br> arrangements that bring joy 
-                 and beauty to people's lives. For over a <br> decade, our dedicated team of florists has been crafting unique 
-                 and <br> enchanting bouquets for every occasion. We invite you to discover the <br> artistry and love that goes 
-                 into each of our creations."</p>
-
-            <div class="btn">
-                <button><a href="products.html"> Shop Now <i class="fa fa-shopping-cart" aria-hidden="true"></i></a></button>
-                <button class="lrm"><a href="about.html">Learn More <i class="fa fa-info-circle" aria-hidden="true"></i></a></button>
-            </div>
+    <!-- قسم المشاريع أو المهارات (اختياري) -->
+    <div class="container">
+        <div class="card">
+            <h3>المهارات التقنية</h3>
+            <p>HTML5, CSS3, JavaScript, React, Python. أعمل على تطوير مهاراتي باستمرار.</p>
+        </div>
+        <div class="card">
+            <h3>أحدث المشاريع</h3>
+            <p>تم تطوير موقع تجارة إلكترونية متكامل باستخدام أحدث التقنيات لضمان السرعة والأمان.</p>
+        </div>
+        <div class="card">
+            <h3>التواصل</h3>
+            <p>متاح للعمل الحر والمشاريع التعاونية. لا تتردد في مراسلتي لمناقشة أفكارك.</p>
         </div>
     </div>
 
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2023</p>
+    </footer>
+
+    <!-- كود الجافاسكربت للتبديل بين الوضعين -->
     <script>
-        const container = document.querySelector('.container');
-        const btnPopup = document.querySelector('.login');
-        const iconClose = document.querySelector('.icon-close');
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = toggleButton.querySelector('i');
 
-        btnPopup.addEventListener('click', ()=> {
-            container.classList.add('active-popup');
-        });
-
-        iconClose.addEventListener('click', ()=> {
-            container.classList.remove('active-popup');
+        toggleButton.addEventListener('click', () => {
+            // التحقق من الوضع الحالي
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                // التبديل للوضع النهاري
+                body.setAttribute('data-theme', 'light');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                toggleButton.innerHTML = '<i class="fas fa-moon"></i> الوضع الليلي';
+            } else {
+                // التبديل للوضع الليلي
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                toggleButton.innerHTML = '<i class="fas fa-sun"></i> الوضع النهاري';
+            }
         });
     </script>
-
 </body>
 </html>
