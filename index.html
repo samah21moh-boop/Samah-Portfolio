@@ -1,125 +1,89 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سماح الحويدي | السيرة الذاتية الرقمية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2d3436;
-            --accent: #0984e3;
-            --bg: #ffffff;
-            --light-gray: #f9f9f9;
-        }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; background-color: var(--bg); color: var(--primary); margin: 0; line-height: 1.7; }
-        .container { max-width: 900px; margin: auto; padding: 40px 20px; }
+import React from 'react';
+import { Github, Linkedin, Mail, ExternalLink, Code2 } from 'lucide-react';
+
+const Portfolio = () => {
+  return (
+    <div className="min-h-screen bg-[#120a1f] text-white font-sans selection:bg-[#6432a8] selection:text-white">
+      
+      {/* Navbar - القائمة العلوية */}
+      <nav className="fixed w-full z-50 px-6 py-4 backdrop-blur-md bg-[#120a1f]/80 border-b border-[#1e1233]">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <div className="text-2xl font-bold tracking-tighter text-[#9266d4]">PORTFOLIO.</div>
+          <div className="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-gray-400">
+            <a href="#about" className="hover:text-[#6432a8] transition-colors">About</a>
+            <a href="#projects" className="hover:text-[#6432a8] transition-colors">Projects</a>
+            <a href="#contact" className="hover:text-[#6432a8] transition-colors">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section - الواجهة الرئيسية */}
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        {/* تأثير الإضاءة الخلفية */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#6432a8]/20 rounded-full blur-[120px] -z-10"></div>
         
-        /* Header Section */
-        header { text-align: center; padding-bottom: 50px; border-bottom: 2px solid var(--light-gray); }
-        h1 { font-size: 2.8em; margin-bottom: 10px; color: var(--primary); }
-        .contact-info { margin-top: 15px; font-size: 0.95em; color: #636e72; }
-        .contact-info span { margin: 0 10px; }
-        
-        /* Section Styles */
-        section { padding: 40px 0; }
-        h2 { font-size: 1.8em; color: var(--accent); border-right: 4px solid var(--accent); padding-right: 15px; margin-bottom: 30px; }
-        
-        /* Timeline/Card Style */
-        .experience-item, .education-item { margin-bottom: 30px; position: relative; padding-right: 20px; }
-        .item-title { font-weight: bold; font-size: 1.2em; color: #2d3436; }
-        .item-sub { color: var(--accent); font-weight: 600; margin: 5px 0; }
-        .item-date { font-size: 0.9em; color: #b2bec3; margin-bottom: 10px; }
-        
-        /* Skills Tags */
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag { background: var(--light-gray); padding: 8px 18px; border-radius: 5px; font-size: 0.9em; border: 1px solid #dfe6e9; }
-        
-        /* Print/Download Button */
-        .actions { text-align: center; margin-top: 40px; }
-        .btn-download { background: var(--accent); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn-download:hover { background: #074b81; transform: translateY(-2px); }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2em; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <header>
-        <h1>سماح محمد الحويدي</h1>
-        <p style="font-size: 1.2em; color: #636e72;">أخصائية بيانات وتنسيق مالي | خريجة رياضيات</p>
-        <div class="contact-info">
-            <span><i class="fas fa-envelope"></i> Samah.21moh@gmail.com</span>
-            <span><i class="fas fa-phone"></i> +966 597722559</span>
-            <span><i class="fas fa-map-marker-alt"></i> الرياض، السعودية</span>
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-[#9266d4] bg-clip-text text-transparent">
+            صانع تجارب رقمية مميزة
+          </h1>
+          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            أقوم بتحويل الأفكار إلى واقع ملموس من خلال تصميم وبرمجة واجهات عصرية تركز على تجربة المستخدم.
+          </p>
+          <div className="flex justify-center gap-4">
+            <button className="bg-[#6432a8] hover:bg-[#9266d4] text-white px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105">
+              شاهد أعمالي
+            </button>
+            <button className="border border-[#6432a8] text-[#9266d4] hover:bg-[#6432a8]/10 px-8 py-3 rounded-full font-medium transition-all">
+              تواصل معي
+            </button>
+          </div>
         </div>
-        <div class="actions">
-            <a href="Samah_Resume.pdf" target="_blank" class="btn-download">
-                <i class="fas fa-file-pdf"></i> تحميل نسخة PDF
-            </a>
-        </div>
-    </header>
+      </section>
 
-    <section>
-        <h2>الخبرة العملية</h2>
-        <div class="experience-item">
-            <div class="item-title">منسق فواتير (Billing Coordinator) [cite: 9]</div>
-            <div class="item-sub">مستشفى الدكتور سليمان الحبيب [cite: 8]</div>
-            <div class="item-date">يونيو 2023 – يوليو 2025 [cite: 9]</div>
-            <ul>
-                <li>إدارة عمليات الفواتير والمعاملات المالية في المستشفى بدقة عالية[cite: 10, 45].</li>
-                <li>معالجة المطالبات التأمينية والتنسيق المباشر مع مزودي التأمين[cite: 11, 46].</li>
-                <li>تسوية الحسابات المدينة وحل النزاعات المتعلقة بالفواتير[cite: 12, 47].</li>
-                <li>التعاون مع الفرق المالية والطبية لدعم إدارة دورة الإيرادات[cite: 13, 48].</li>
-            </ul>
-        </div>
+      {/* Projects Section - قسم المشاريع */}
+      <section id="projects" className="py-20 px-6 bg-[#120a1f]">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-4 mb-12">
+            <h2 className="text-3xl font-bold">المشاريع المختارة</h2>
+            <div className="h-[1px] flex-1 bg-[#1e1233]"></div>
+          </div>
 
-        <div class="experience-item">
-            <div class="item-title">باحث جودة (Quality Researcher) [cite: 15]</div>
-            <div class="item-sub">الهيئة العامة للإحصاء [cite: 14]</div>
-            <div class="item-date">مايو 2022 – سبتمبر 2022 [cite: 15]</div>
-            <ul>
-                <li>جمع وتحليل بيانات التعداد لضمان الدقة والجودة الشاملة[cite: 16, 51].</li>
-                <li>تطبيق منهجيات ضبط الجودة في مختلف مراحل التعداد الإحصائي[cite: 17, 52].</li>
-                <li>إعداد التقارير التحليلية لدعم اتخاذ القرارات المبنية على البيانات[cite: 18, 53].</li>
-            </ul>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Project Card - مثال لمشروع */}
+            {[1, 2].map((i) => (
+              <div key={i} className="group relative bg-[#1e1233] border border-white/5 rounded-2xl overflow-hidden hover:border-[#6432a8]/50 transition-all">
+                <div className="h-64 bg-[#6432a8]/10 flex items-center justify-center group-hover:bg-[#6432a8]/20 transition-all">
+                   <Code2 size={48} className="text-[#6432a8]" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2">اسم المشروع الذكي {i}</h3>
+                  <p className="text-gray-400 text-sm mb-4">وصف مختصر للمشروع والتقنيات المستخدمة فيه مثل React و Tailwind CSS.</p>
+                  <div className="flex gap-4">
+                    <span className="text-xs text-[#9266d4] font-mono">React</span>
+                    <span className="text-xs text-[#9266d4] font-mono">Animation</span>
+                  </div>
+                  <ExternalLink size={20} className="absolute top-6 right-6 text-gray-500 group-hover:text-[#9266d4]" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section>
-        <h2>التعليم</h2>
-        <div class="education-item">
-            <div class="item-title">بكالوريوس رياضيات [cite: 5, 38]</div>
-            <div class="item-sub">جامعة الأميرة نورة بنت عبد الرحمن [cite: 4, 37]</div>
-            <div class="item-date">تاريخ التخرج: يناير 2022 [cite: 5, 39]</div>
-            <p><strong>مشروع التخرج:</strong> حلول المشكلات الدقيقة لمعادلات نافييه-ستوكس؛ حيث قمت بتطوير حلول تحليلية ونمذجية للمسائل الرياضية المعقدة[cite: 6, 40].</p>
+      {/* Footer - التذييل */}
+      <footer id="contact" className="py-20 px-6 border-t border-[#1e1233]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8">لنعمل معاً</h2>
+          <div className="flex justify-center space-x-8 mb-12">
+            <Github className="cursor-pointer hover:text-[#6432a8] transition-colors" />
+            <Linkedin className="cursor-pointer hover:text-[#6432a8] transition-colors" />
+            <Mail className="cursor-pointer hover:text-[#6432a8] transition-colors" />
+          </div>
+          <p className="text-gray-500 text-sm">© 2026 جميع الحقوق محفوظة.</p>
         </div>
-    </section>
+      </footer>
+    </div>
+  );
+};
 
-    <section>
-        <h2>المهارات والشهادات</h2>
-        <p><strong>المهارات التقنية والبيانات:</strong></p>
-        <div class="skills-grid">
-            <div class="skill-tag">SQL [cite: 20, 55]</div>
-            <div class="skill-tag">Power BI [cite: 20, 56]</div>
-            <div class="skill-tag">Advanced Excel [cite: 20, 55]</div>
-            <div class="skill-tag">تحليل البيانات [cite: 21, 57]</div>
-            <div class="skill-tag">النمذجة الرياضية [cite: 21, 57]</div>
-            <div class="skill-tag">إدارة دورة الإيرادات [cite: 22, 58]</div>
-        </div>
-        <br>
-        <p><strong>الشهادات المهنية:</strong></p>
-        <div class="skills-grid">
-            <div class="skill-tag">SQL for Data Science (Satr) [cite: 26, 62]</div>
-            <div class="skill-tag">Data Analytics Professional (Satr) [cite: 27, 64]</div>
-            <div class="skill-tag">Cybersecurity (Cisco) [cite: 29, 68]</div>
-            <div class="skill-tag">المحاسبة لغير المحاسبين (منشآت) [cite: 28, 66]</div>
-        </div>
-    </section>
-</div>
-
-</body>
-</html>
+export default Portfolio;
