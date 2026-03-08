@@ -29,7 +29,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Cairo', sans-serif; /* توحيد الخط لكل الموقع */
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: all 0.3s ease;
@@ -59,8 +59,21 @@
         }
 
         .welcome-text { margin-bottom: 20px; }
-        .hello-msg { font-size: 1.2rem; color: var(--primary-color); display: block; }
-        .profile-name { font-size: 2.2rem; font-weight: 700; color: var(--text-color); }
+        
+        /* جعل الخط هنا مطابقاً لأقسام الموقع */
+        .hello-msg { 
+            font-size: 1.2rem; 
+            color: var(--primary-color); 
+            display: block;
+            font-weight: 400; 
+        }
+        
+        .profile-name { 
+            font-size: 2.2rem; 
+            font-weight: 700; 
+            color: var(--text-color);
+            margin-top: 5px;
+        }
 
         .social-links {
             display: flex;
@@ -111,6 +124,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 700;
         }
 
         h2::after {
@@ -132,6 +146,7 @@
             border-radius: 30px;
             font-size: 1rem;
             transition: 0.3s;
+            font-weight: 600;
         }
         .cv-btn:hover { background: var(--primary-dark); transform: scale(1.05); }
 
@@ -182,7 +197,7 @@
     <header>
         <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
         
-        <img src="https://i.ibb.co/Y7hZ4vS/logo-png.jpg" alt="Samah Mohmed Logo" class="main-logo">
+        <img src="logo.png" alt="Samah Mohmed Logo" class="main-logo">
         
         <div class="welcome-text">
             <span class="hello-msg">Hello,</span>
@@ -203,7 +218,9 @@
         </section>
 
         <div class="cv-section">
-            <a href="#" class="cv-btn"><i class="fas fa-download"></i> Download CV</a>
+            <a href="https://drive.google.com/file/d/14bgzBDAcOiLd4_br1J06nI0Z33oNadrR/view?usp=drive_link" target="_blank" class="cv-btn">
+                <i class="fas fa-download"></i> Download CV
+            </a>
         </div>
 
         <section>
