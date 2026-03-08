@@ -1,83 +1,474 @@
+<think>
+The user is saying they don't want the CV (resume) button in the social icons section. They want it somewhere else or removed from that location. Looking at the code I provided, the CV download button is in the header section along with the social links.
+
+They want me to modify the code so the CV button is not in the social icons area. I should move it to a different location or remove it from the header social links section.
+
+Let me create a modified version where the CV button is placed elsewhere (maybe in a separate section or at the bottom of the page).
+</think>أهلاً بك سماح! 🌟
+
+فهمتِ تماماً! سأقوم بنقل زر تحميل السيرة الذاتية من قسم الأيقونات إلى مكان آخر في الصفحة. إليك الكود المعدل:
+
+---
+
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samah Mohammed | معرض الأعمال</title>
+    <title>Samah Alhumaidi | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2d3436;
-            --accent-color: #0984e3;
-            --bg-light: #ffffff;
-            --section-bg: #f9f9f9;
+            /* الألوان الرئيسية - بنفسجي #6432a8 */
+            --primary-color: #6432a8;
+            --primary-light: #8b5cf6;
+            --primary-dark: #4c1d95;
+            --primary-darker: #3b0764;
+            
+            /* الوضع النهاري */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --secondary-bg: #e9ecef;
+            --shadow: 0 4px 15px rgba(100, 50, 168, 0.1);
         }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-light); color: var(--primary-color); margin: 0; padding: 0; }
-        
-        /* تنسيق الهيدر والصورة الشخصية */
-        .hero { text-align: center; padding: 60px 20px; background: var(--section-bg); }
-        .profile-container {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid var(--accent-color);
-            background-color: #fff;
+
+        /* الوضع الليلي */
+        [data-theme="dark"] {
+            --bg-color: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --text-color: #e0e0e0;
+            --secondary-bg: #16213e;
+            --shadow: 0 4px 15px rgba(100, 50, 168, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(100, 50, 168, 0.3);
+        }
+
+        .profile-name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .profile-title {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            font-size: 28px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-5px);
+        }
+
+        .phone-number {
+            font-size: 1.1rem;
+            margin-top: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .profile-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* يضمن ظهور الصورة كاملة دون قص */
+            gap: 8px;
         }
 
-        .container { max-width: 900px; margin: auto; padding: 20px; }
-        h1 { font-size: 2.2em; margin: 10px 0; }
-        
-        /* تنسيق زر تحميل السيرة الذاتية */
-        .btn { 
-            display: inline-block; 
-            padding: 12px 30px; 
-            background: var(--accent-color); 
-            color: #fff; 
-            text-decoration: none; 
-            border-radius: 30px; 
-            margin-top: 15px; 
-            transition: 0.3s; 
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(9, 132, 227, 0.3);
+        /* Theme Toggle */
+        .theme-toggle {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        .btn:hover { background: #074b81; transform: translateY(-2px); }
-        
-        section { padding: 30px 0; border-bottom: 1px solid #eee; }
-        .card { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h3 { color: var(--accent-color); margin-top: 0; }
-        
-        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; }
-        .skills-list li { background: #e1f5fe; padding: 8px 15px; border-radius: 20px; font-size: 0.9em; font-weight: 500; }
-        
-        .contact-info { margin: 15px 0; font-size: 1.1em; }
-        .contact-info a { color: var(--primary-color); text-decoration: none; margin: 0 10px; }
+
+        .theme-toggle:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 50px;
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(100, 50, 168, 0.2);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--primary-light);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--secondary-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-right: 5px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .card:hover h3 {
+            color: white;
+        }
+
+        .card p, .card li {
+            color: var(--text-color);
+        }
+
+        .card:hover p, .card:hover li {
+            color: white;
+        }
+
+        .card ul {
+            padding-right: 25px;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(100, 50, 168, 0.4);
+        }
+
+        .skill-item i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-item h4 {
+            font-size: 1.1rem;
+        }
+
+        /* About Me English Section */
+        .about-english {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin-top: 30px;
+            border: 2px solid var(--primary-light);
+        }
+
+        .about-english h2 {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+
+        .about-english p {
+            color: white;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+
+        .about-english .skill-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .about-english .skill-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Certifications */
+        .certifications {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+        }
+
+        .certifications h3 {
+            color: var(--primary-light);
+            margin-bottom: 15px;
+        }
+
+        .certifications ul {
+            list-style: none;
+            padding-right: 0;
+        }
+
+        .certifications li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .certifications li:last-child {
+            border-bottom: none;
+        }
+
+        /* CV Button Section */
+        .cv-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 20px;
+            margin-top: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .cv-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .cv-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cv-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-name { font-size: 2rem; }
+            .theme-toggle { 
+                position: relative; 
+                left: auto; 
+                top: auto; 
+                transform: none; 
+                margin: 20px auto; 
+            }
+            header { position: relative; }
+            .social-links { flex-direction: column; align-items: center; }
+            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+        }
     </style>
 </head>
 <body>
 
-<div class="hero">
-    <div class="profile-container">
-        <img src="image.png" alt="سماح الحويدي">
-    </div>
-    <h1>Samah Mohammed</h1>
-    <p>Data Analyst | Mathematics
+    <header>
+        <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <h1 class="profile-name">سماح محمد الحويدي</h1>
+        <p class="profile-title">خريجة رياضيات | أخصائية تحليل بيانات وتنسيق مالي</p>
+        
+        <div class="social-links">
+            <a href="mailto:Samah.21moh@gmail.com">
+                <i class="fas fa-envelope"></i>
+                <span>Samah.21moh@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+            <p class="phone-number">
+                <i class="fas fa-phone"></i> +966 597722559
+            </p>
+        </div>
+    </header>
 
-</p>
-    
-    <div class="contact-info">
-        <a href="mailto:Samah.21moh@gmail.com"><i class="fas fa-envelope"></i> Samah.21moh@gmail.com</a>
-        <br>
-        <span><i class="fas fa-phone"></i> +966 597722559</span>
-    </div>
+    <div class="container">
+        <!-- About Me Arabic -->
+        <section id="about">
+            <h2>نبذة عني</h2>
+            <p>خريجة رياضيات بمهارات تحليلية قوية. لدي خبرة في تحليل البيانات وضبط الجودة وإدارة العمليات المالية. أهتم باتخاذ القرارات المبنية على البيانات وتطوير العمليات.</p>
+        </section>
 
-    <a href="Samah_Resume.pdf
+        <!-- About Me English -->
+        <section class="about-english">
+            <h2>About Me</h2>
+            <p>I'm a <strong>Data Analyst</strong> with a passion for turning numbers into meaningful stories. I believe that behind every dataset lies a story waiting to be told — and I love being the one to uncover it.</p>
+            <p>I specialize in transforming raw data into clear, actionable insights that help businesses make smarter decisions.</p>
+            <div class="skill-tags">
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">NumPy</span>
+                <span class="skill-tag">Advanced Excel</span>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+            <h2>الخبرة العملية</h2>
+            <div class="card">
+                <h3>مستشفى الدكتور سليمان الحبيب | منسق فواتير</h3>
+                <p><em>يونيو 2023 – يوليو 2025</em></p>
+                <ul>
+                    <li>إدارة عمليات الفواتير والمعاملات المالية بدقة عالية</li>
+                    <li>معالجة المطالبات التأمينية والتنسيق مع الشركات</li>
+                    <li>حل التناقضات المالية ودعم إدارة دورة الإيرادات</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>الهيئة العامة للإحصاء | باحث جودة</h3>
+                <p><em>مايو 2022 – سبتمبر 2022</em></p>
+                <ul>
+                    <li>تحليل بيانات التعداد لضمان الدقة والجودة</li>
+                    <li>تطبيق منهجيات ضبط الجودة وإعداد التقارير التحليلية</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <h2>التعليم</h2>
+            <div class="card">
+                <h3>جامعة الأميرة نورة بنت عبد الرحمن</h3>
+                <p>بكالوريوس رياضيات | يناير 2022</p>
+                <p><strong>مشروع التخرج:</strong> حلول المشكلات الدقيقة لمعادلات نافييه-ستوكس باستخدام التحليل العددي والمحاكاة الحاسوبية</p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2>المهارات والشهادات</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <h4>Power BI</h4>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-database"></i>
+                    <h4>SQL</h4>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-python"></i>
+                    <h4>Python</h4>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-table"></i>
+                    <h4>NumPy</h4>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-file-excel"></i>
+                    <h4>Advanced Excel</h4>
+                </div>
+                <div class="skill-item">
+                    <i class="fas
