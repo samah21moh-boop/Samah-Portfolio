@@ -3,111 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samah Portfolio</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8c52ff; /* اللون البنفسجي الفاتح */
-            --bg: #fcfaff;
-            --text: #333;
+            --primary-color: #8c52ff; 
+            --primary-light: #b388ff; 
+            --bg-color: #fcfaff;
+            --card-bg: #ffffff;
+            --text-color: #443a5a;
+            --shadow: 0 5px 20px rgba(140, 82, 255, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0d0b14;
+            --card-bg: #161421;
+            --text-color: #e0dced;
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
-            line-height: 1.6;
+            transition: 0.3s;
         }
 
         header {
             text-align: center;
-            padding: 50px 20px;
-            background: white;
-            border-bottom: 1px solid #eee;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            position: relative;
         }
 
-        /* تنسيق الشعار ليكون واضحاً */
-        .main-logo {
-            max-width: 350px;
+        /* تنسيق الصورة */
+        .welcome-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin: 0 auto 15px;
+            overflow: hidden; /* لضمان بقاء الصورة داخل الدائرة */
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .welcome-image img {
             width: 100%;
-            height: auto;
-            margin-bottom: 20px;
+            height: 100%;
+            object-fit: cover; /* لجعل الصورة تملأ الدائرة بدون تمطيط */
         }
 
-        .social-icons {
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
+            margin: 15px 0;
         }
 
-        .social-icons a {
-            color: var(--primary);
-            font-size: 18px;
+        .social-links a {
+            font-size: 16px; /* أيقونات صغيرة */
+            color: white;
             width: 35px;
             height: 35px;
-            border: 1px solid #ddd;
+            background: rgba(255,255,255,0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: 0.3s;
         }
 
-        .social-icons a:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px 20px;
-        }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
 
         section {
-            background: white;
+            background: var(--card-bg);
             padding: 25px;
             border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
         }
 
-        h2 {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+        h2 { color: var(--primary-color); font-size: 1.4rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
 
         .cv-btn {
             display: inline-block;
-            background: var(--primary);
+            background: var(--primary-color);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
+            padding: 8px 20px;
+            border-radius: 20px;
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
+            font-size: 0.9rem;
         }
 
-        .contact-me {
-            background: var(--primary) !important;
-            color: white;
-            text-align: center;
+        .theme-toggle {
+            position: absolute; left: 20px; top: 20px;
+            background: none; border: 1px solid white; color: white;
+            cursor: pointer; padding: 5px 10px; border-radius: 15px;
         }
-
-        .contact-me h2 { color: white; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="https://i.ibb.co/Y7hZ4vS/logo-png.jpg" alt="Samah Mohmed Logo" class="main-logo">
+        <button class="theme-toggle" id="theme-toggle">Dark Mode</button>
         
-        <div class="social-icons">
+        <div class="welcome-image">
+            <img src="my-photo.jpg" alt="Profile" onerror="this.style.display='none';">
+            <i class="fas fa-user" style="color:#ccc; font-size: 40px;"></i>
+        </div>
+        
+        <h1 class="profile-name">[اسمك]</h1>
+        <div class="social-links">
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
@@ -117,36 +128,35 @@
     <div class="container">
         <section>
             <h2>About Me</h2>
-            <p>[تحدثي عن نفسك هنا]</p>
+            <p>اكتبي هنا تعريفاً عنك...</p>
         </section>
 
-        <div style="text-align: center; margin-bottom: 30px;">
-            <a href="#" class="cv-btn"><i class="fas fa-file-pdf"></i> CV</a>
-        </div>
+        <section style="text-align: center;">
+            <a href="#" class="cv-btn"><i class="fas fa-file-download"></i> CV</a>
+        </section>
 
         <section>
             <h2>Skills</h2>
-            <p>[اذكري مهاراتك هنا]</p>
+            <p>المهارات هنا...</p>
         </section>
 
         <section>
             <h2>Projects</h2>
-            <p>[اعرضي مشاريعك هنا]</p>
+            <p>المشاريع هنا...</p>
         </section>
 
-        <section class="contact-me">
-            <h2>Contact Me</h2>
+        <section style="background: var(--primary-color); color: white; text-align: center;">
+            <h2 style="color: white; border: none;">Contact Me</h2>
             <p>Email: example@mail.com</p>
-            <div class="social-icons" style="margin-top: 15px;">
-                <a href="#" style="background: white;"><i class="fas fa-envelope"></i></a>
-                <a href="#" style="background: white;"><i class="fab fa-whatsapp"></i></a>
-            </div>
         </section>
     </div>
 
-    <footer style="text-align: center; padding: 20px; opacity: 0.5; font-size: 12px;">
-        © 2026 Samah Mohmed
-    </footer>
-
+    <script>
+        const btn = document.getElementById('theme-toggle');
+        btn.onclick = () => {
+            const theme = document.body.getAttribute('data-theme');
+            document.body.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark');
+        }
+    </script>
 </body>
 </html>
