@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samah Mohmed | Portfolio</title>
+    <title>Samah Mohammed | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #6432a8;
+            --primary-light: #8e5bd3;
             --bg: #fcfaff;
             --header-bg: #ffffff;
             --card-bg: #ffffff;
             --text: #332d41;
-            --text-light: #6432a8;
             --secondary-bg: #f3efff;
             --border: #eeeeee;
+            --shadow: rgba(100, 50, 168, 0.1);
         }
 
         [data-theme="dark"] {
@@ -23,9 +24,9 @@
             --header-bg: #161421;
             --card-bg: #1a1726;
             --text: #e0dced;
-            --text-light: #a37df0;
             --secondary-bg: #241f3a;
             --border: #2d2845;
+            --shadow: rgba(0, 0, 0, 0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,9 +35,11 @@
             font-family: 'Cairo', sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            transition: all 0.4s ease;
+            transition: background 0.4s, color 0.4s;
+            line-height: 1.6;
         }
 
+        /* Header */
         header {
             text-align: center;
             padding: 80px 20px 40px;
@@ -45,7 +48,6 @@
             position: relative;
         }
 
-        /* حاوية اللوجو الدائري الجديد */
         .logo-container {
             width: 160px;
             height: 160px;
@@ -55,11 +57,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(100, 50, 168, 0.15);
+            box-shadow: 0 10px 25px var(--shadow);
             border: 2px solid var(--primary);
         }
 
-        .hello-text { font-size: 1.4rem; color: var(--primary); font-weight: 300; display: block; }
+        .hello-text { font-size: 1.4rem; color: var(--primary); font-weight: 400; display: block; }
         .name-text { font-size: 2.8rem; font-weight: 700; color: var(--text); margin-bottom: 20px; }
 
         .social-links { display: flex; justify-content: center; gap: 15px; margin: 15px 0; }
@@ -71,27 +73,52 @@
         }
         .social-links a:hover { background: var(--primary); color: white; transform: translateY(-3px); }
 
-        .container { max-width: 800px; margin: auto; padding: 40px 20px; }
+        /* Sections */
+        .container { max-width: 850px; margin: auto; padding: 40px 20px; }
         section {
-            background-color: var(--card-bg); padding: 30px; border-radius: 20px;
+            background-color: var(--card-bg); padding: 35px; border-radius: 20px;
             margin-bottom: 30px; border: 1px solid var(--border);
+            box-shadow: 0 5px 15px var(--shadow);
         }
 
-        h2 { color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
         h2::after { content: ""; height: 1px; flex: 1; background: var(--border); }
 
         .cv-btn {
             display: inline-flex; align-items: center; gap: 10px;
             background-color: var(--primary); color: white !important;
-            padding: 12px 30px; text-decoration: none; border-radius: 50px;
+            padding: 14px 35px; text-decoration: none; border-radius: 50px;
             font-weight: 600; transition: 0.3s;
         }
+        .cv-btn:hover { transform: scale(1.05); background: var(--primary-light); }
+
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px;
+        }
+        .skill-item {
+            background: var(--secondary-bg); padding: 20px; border-radius: 15px; text-align: center;
+        }
+        .skill-item i { font-size: 1.6rem; color: var(--primary); margin-bottom: 10px; display: block; }
+
+        .project-card {
+            background: var(--secondary-bg); padding: 20px; border-radius: 15px; margin-bottom: 15px;
+            border-right: 5px solid var(--primary);
+        }
+
+        .contact-me { background: var(--primary) !important; color: white; text-align: center; }
+        .contact-me h2 { color: white; justify-content: center; }
+        .contact-me h2::after { display: none; }
+        .contact-me .social-links a { background: rgba(255,255,255,0.2); color: white; }
+        .contact-me .social-links a:hover { background: white; color: var(--primary); }
 
         .theme-toggle {
             position: absolute; left: 20px; top: 20px;
             background: var(--secondary-bg); color: var(--primary);
-            border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+            border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
         }
+
+        footer { text-align: center; padding: 40px; font-size: 0.9rem; opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -102,15 +129,15 @@
         <div class="logo-container">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width: 140px;">
                 <circle cx="100" cy="100" r="95" fill="none" stroke="#6432a8" stroke-width="1" stroke-dasharray="4,2"/>
-                <text x="100" y="115" font-family="'serif'" font-size="90" fill="#6432a8" text-anchor="middle" font-style="italic">S</text>
-                <text x="100" y="150" font-family="Cairo" font-size="10" fill="#332d41" text-anchor="middle" letter-spacing="3" font-weight="bold">SAMAH MOHMED</text>
-                <path d="M60 120 L140 120" stroke="#6432a8" stroke-width="0.5" opacity="0.3"/>
+                <text x="100" y="110" font-family="serif" font-size="90" fill="#6432a8" text-anchor="middle" font-style="italic">S</text>
+                <text x="100" y="150" font-family="Cairo" font-size="10" fill="#332d41" text-anchor="middle" letter-spacing="2" font-weight="bold">SAMAH MOHAMMED</text>
+                <path d="M70 125 Q 100 100, 130 125" stroke="#6432a8" stroke-width="1" fill="none" opacity="0.4"/>
             </svg>
         </div>
         
         <div class="welcome-text">
             <span class="hello-text">Hello,</span>
-            <h1 class="name-text">Samah Mohmed</h1>
+            <h1 class="name-text">Samah Mohammed</h1>
         </div>
 
         <div class="social-links">
@@ -123,27 +150,64 @@
     <div class="container">
         <section>
             <h2>About Me</h2>
-            <p>Data Analyst with a passion to uncover the mysteries of data. I believe that data is the best source of guidance for any business decision.</p>
+            <p>Data Analyst with a passion to uncover the mysteries of data. I believe that data is the best source of guidance for any business decision and I always aim to present data in a way that is easy to understand, in order to reach meaningful conclusions.</p>
         </section>
 
-        <div style="text-align: center; margin-bottom: 30px;">
+        <div style="text-align: center; margin-bottom: 40px;">
             <a href="https://drive.google.com/file/d/14bgzBDAcOiLd4_br1J06nI0Z33oNadrR/view?usp=drive_link" target="_blank" class="cv-btn">
-                <i class="fas fa-download"></i> Download CV
+                <i class="fas fa-download"></i> Download My CV
             </a>
         </div>
-        
-        </div>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item"><i class="fas fa-file-excel"></i><h4>Excel</h4></div>
+                <div class="skill-item"><i class="fas fa-database"></i><h4>SQL</h4></div>
+                <div class="skill-item"><i class="fab fa-python"></i><h4>Python</h4></div>
+                <div class="skill-item"><i class="fas fa-chart-pie"></i><h4>Tableau</h4></div>
+                <div class="skill-item"><i class="fas fa-chart-bar"></i><h4>Power BI</h4></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3>Sales Analysis Dashboard</h3>
+                <p>A comprehensive dashboard built with Power BI to track quarterly sales and identify growth opportunities.</p>
+            </div>
+            <div class="project-card">
+                <h3>Customer Segmentation</h3>
+                <p>Using Python and SQL to categorize customers based on purchasing behavior for targeted marketing.</p>
+            </div>
+        </section>
+
+        <section class="contact-me">
+            <h2>Contact Me</h2>
+            <p>Have a project in mind? I'd love to hear about it. Let's work together to bring your ideas to life.</p>
+            <div class="social-links">
+                <a href="mailto:samah.21moh@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/966597722559" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Samah Mohammed - All Rights Reserved</p>
+    </footer>
 
     <script>
         const btn = document.getElementById('theme-toggle');
+        const icon = btn.querySelector('i');
         btn.onclick = () => {
             const isDark = document.body.getAttribute('data-theme') === 'dark';
             if (isDark) {
                 document.body.removeAttribute('data-theme');
-                btn.innerHTML = '<i class="fas fa-moon"></i>';
+                icon.className = 'fas fa-moon';
             } else {
                 document.body.setAttribute('data-theme', 'dark');
-                btn.innerHTML = '<i class="fas fa-sun"></i>';
+                icon.className = 'fas fa-sun';
             }
         }
     </script>
