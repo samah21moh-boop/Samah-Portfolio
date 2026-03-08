@@ -7,207 +7,225 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* تعريف الألوان للوضعين الفاتح والداكن */
         :root {
-            --primary-color: #6432a8; 
-            --primary-light: #8e5bd3;
-            --primary-dark: #4a2182;
-            --bg-color: #fcfaff;
+            --primary: #6432a8;
+            --bg: #fcfaff;
+            --header-bg: #ffffff;
             --card-bg: #ffffff;
-            --text-color: #332d41;
+            --text: #332d41;
+            --text-light: #6432a8;
             --secondary-bg: #f3efff;
-            --shadow: 0 5px 20px rgba(100, 50, 168, 0.1);
+            --border: #eeeeee;
+            --shadow: rgba(100, 50, 168, 0.1);
         }
 
         [data-theme="dark"] {
-            --bg-color: #0d0b14;
-            --card-bg: #161421;
-            --text-color: #e0dced;
-            --secondary-bg: #1e1a2e;
-            --shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            --bg: #0d0b14;
+            --header-bg: #161421;
+            --card-bg: #1a1726;
+            --text: #e0dced;
+            --text-light: #a37df0;
+            --secondary-bg: #241f3a;
+            --border: #2d2845;
+            --shadow: rgba(0, 0, 0, 0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Cairo', sans-serif; /* توحيد الخط لكل الموقع */
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background 0.4s, color 0.4s;
             line-height: 1.6;
         }
 
-        /* Header */
+        /* Header Section */
         header {
             text-align: center;
-            padding: 60px 20px;
-            background: #fff;
-            border-bottom: 1px solid #eee;
+            padding: 80px 20px 40px;
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border);
             position: relative;
+            transition: background 0.4s;
         }
 
-        .main-logo {
+        /* تصميم حاوية الصورة الدائرية */
+        .profile-container {
             width: 150px;
             height: 150px;
-            object-fit: contain;
-            background-color: #fff;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            border: 3px solid var(--primary-color);
-            padding: 10px;
-            display: block;
-            margin: 0 auto 15px;
-            box-shadow: var(--shadow);
+            border: 4px solid var(--primary);
+            background: white; /* خلفية بيضاء لضمان ظهور اللوجو */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow);
+            padding: 15px;
         }
 
-        .welcome-text { margin-bottom: 20px; }
-        
-        /* جعل الخط هنا مطابقاً لأقسام الموقع */
-        .hello-msg { 
-            font-size: 1.2rem; 
-            color: var(--primary-color); 
-            display: block;
-            font-weight: 400; 
-        }
-        
-        .profile-name { 
-            font-size: 2.2rem; 
-            font-weight: 700; 
-            color: var(--text-color);
-            margin-top: 5px;
+        .profile-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
+        /* تنسيق النصوص بأحجام مختلفة */
+        .hello-text {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            font-weight: 400;
+            display: block;
+        }
+
+        .name-text {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        /* أيقونات التواصل */
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin: 15px 0;
+            gap: 15px;
         }
 
         .social-links a {
-            font-size: 18px;
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
+            font-size: 20px;
+            color: var(--primary);
             background: var(--secondary-bg);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
         }
 
         .social-links a:hover {
-            background: var(--primary-color);
+            background: var(--primary);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
+        /* Container & Sections */
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: auto;
-            padding: 30px 20px;
+            padding: 40px 20px;
         }
 
         section {
-            margin-bottom: 35px;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(100, 50, 168, 0.05);
+            background-color: var(--card-bg);
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.3s, background 0.4s;
         }
 
         h2 {
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 700;
+            gap: 15px;
         }
 
         h2::after {
             content: "";
-            height: 1px;
+            height: 2px;
             flex: 1;
-            background: var(--secondary-bg);
+            background: var(--border);
         }
 
-        .cv-section { text-align: center; margin: 20px 0; }
         .cv-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: var(--primary-color);
-            color: white;
-            padding: 12px 30px;
+            gap: 10px;
+            background-color: var(--primary);
+            color: white !important;
+            padding: 15px 35px;
             text-decoration: none;
-            border-radius: 30px;
-            font-size: 1rem;
+            border-radius: 50px;
+            font-weight: 700;
             transition: 0.3s;
-            font-weight: 600;
+            box-shadow: 0 5px 15px var(--shadow);
         }
-        .cv-btn:hover { background: var(--primary-dark); transform: scale(1.05); }
+
+        .cv-btn:hover { transform: scale(1.05); background: var(--primary-dark); }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
         }
+
         .skill-item {
             background: var(--secondary-bg);
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .skill-item i { font-size: 1.5rem; color: var(--primary-color); margin-bottom: 8px; display: block; }
-
-        .project-card {
-            background: var(--secondary-bg);
             padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border-right: 5px solid var(--primary-color);
-        }
-
-        .contact-me {
-            background: var(--primary-color) !important;
-            color: white;
+            border-radius: 15px;
             text-align: center;
+            transition: 0.3s;
         }
-        .contact-me h2 { color: white; justify-content: center; }
-        .contact-me h2::after { display: none; }
-        .contact-me p { margin-bottom: 20px; }
-        .contact-me .social-links a { background: rgba(255,255,255,0.2); color: white; }
-        .contact-me .social-links a:hover { background: white; color: var(--primary-color); }
 
+        .skill-item:hover { background: var(--primary); color: white; }
+        .skill-item i { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+
+        /* Dark Mode Button */
         .theme-toggle {
-            position: absolute; left: 20px; top: 20px;
-            background: var(--secondary-bg); color: var(--primary-color);
-            border: none; width: 40px; height: 40px; border-radius: 50%;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            background: var(--secondary-bg);
+            color: var(--primary);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.3s;
         }
 
-        footer { text-align: center; padding: 40px; font-size: 0.9rem; opacity: 0.7; }
+        footer { text-align: center; padding: 50px; opacity: 0.6; font-size: 0.9rem; }
+
+        /* تعديلات للموبايل */
+        @media (max-width: 600px) {
+            .name-text { font-size: 2rem; }
+            .profile-container { width: 130px; height: 130px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+        <button class="theme-toggle" id="theme-toggle" title="تغيير الوضع">
+            <i class="fas fa-moon"></i>
+        </button>
         
-        <img src="logo.png" alt="Samah Mohmed Logo" class="main-logo">
+        <div class="profile-container">
+            <img src="logo.png" alt="Samah Mohmed Logo" onerror="this.src='https://ui-avatars.com/api/?name=Samah+Mohmed&background=6432a8&color=fff&size=200'">
+        </div>
         
         <div class="welcome-text">
-            <span class="hello-msg">Hello,</span>
-            <h1 class="profile-name">Samah Mohmed</h1>
+            <span class="hello-text">Hello,</span>
+            <h1 class="name-text">Samah Mohmed</h1>
         </div>
 
         <div class="social-links">
-            <a href="mailto:samah.21moh@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://wa.me/966597722559" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:samah.21moh@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/966597722559" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </header>
 
@@ -217,9 +235,9 @@
             <p>Data Analyst with a passion to uncover the mysteries of data. I believe that data is the best source of guidance for any business decision and I always aim to present data in a way that is easy to understand, in order to reach meaningful conclusions.</p>
         </section>
 
-        <div class="cv-section">
+        <div style="text-align: center; margin-bottom: 40px;">
             <a href="https://drive.google.com/file/d/14bgzBDAcOiLd4_br1J06nI0Z33oNadrR/view?usp=drive_link" target="_blank" class="cv-btn">
-                <i class="fas fa-download"></i> Download CV
+                <i class="fas fa-file-download"></i> Download My CV
             </a>
         </div>
 
@@ -230,40 +248,29 @@
                 <div class="skill-item"><i class="fas fa-database"></i><h4>SQL</h4></div>
                 <div class="skill-item"><i class="fab fa-python"></i><h4>Python</h4></div>
                 <div class="skill-item"><i class="fas fa-chart-pie"></i><h4>Tableau</h4></div>
-                <div class="skill-item"><i class="fas fa-chart-bar"></i><h4>Power BI</h4></div>
+                <div class="skill-item"><i class="fas fa-chart-line"></i><h4>Power BI</h4></div>
             </div>
         </section>
 
-        <section>
-            <h2>Projects</h2>
-            <div class="project-card">
-                <h3>Sales Analysis Dashboard</h3>
-                <p>A comprehensive dashboard built with Power BI to track quarterly sales and identify growth opportunities.</p>
-            </div>
-            <div class="project-card">
-                <h3>Customer Segmentation</h3>
-                <p>Using Python and SQL to categorize customers based on purchasing behavior for targeted marketing.</p>
-            </div>
-        </section>
-
-        <section class="contact-me">
-            <h2>Contact Me</h2>
-            <p>Have a project in mind? I'd love to hear about it. Let's work together to bring your ideas to life.</p>
-            <div class="social-links">
-                <a href="mailto:samah.21moh@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/966597722559" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <section style="background: var(--primary); color: white; text-align: center;">
+            <h2 style="color: white; justify-content: center;">Contact Me</h2>
+            <p>I'm always open to discussing new projects and opportunities.</p>
+            <div class="social-links" style="margin-top: 20px;">
+                <a href="mailto:samah.21moh@gmail.com" style="background: white;"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank" style="background: white;"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/966597722559" target="_blank" style="background: white;"><i class="fab fa-whatsapp"></i></a>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>© 2026 Samah Mohmed - All Rights Reserved</p>
+        <p>© 2026 Samah Mohmed - Built with Passion</p>
     </footer>
 
     <script>
         const btn = document.getElementById('theme-toggle');
         const icon = btn.querySelector('i');
+        
         btn.onclick = () => {
             if (document.body.getAttribute('data-theme') === 'dark') {
                 document.body.removeAttribute('data-theme');
