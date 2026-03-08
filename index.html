@@ -45,15 +45,17 @@
             background: #fff;
             border-bottom: 1px solid #eee;
             position: relative;
-        }
-
-        /* تنسيق الشعار (Logo) */
-        .main-logo {
-            max-width: 350px;
-            width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
+  .main-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;    /* تضمن ظهور الشعار كاملاً داخل المساحة */
+    background-color: #fff; /* خلفية بيضاء لملء الفراغات الناتجة عن شكل الشعار المستطيل */
+    border-radius: 50%;
+    border: 2px solid #6432a8;
+    padding: 10px;          /* مسافة بسيطة بين الشعار والإطار الدائري */
+    display: block;
+    margin: 0 auto 20px;
+}}
 
         /* تصغير أيقونات التواصل */
         .social-links {
@@ -204,7 +206,7 @@
     <div class="container">
         <section>
             <h2>About Me</h2>
-            <p>[Data Analyst with a passion to uncover the mysteries of data. I believe that data is the best source of guidance for any business decision and I always aim to present data in a way that is easy to understand, in order to reach meaningful conclusions.]</p>
+            <p>Data Analyst with a passion to uncover the mysteries of data. I believe that data is the best source of guidance for any business decision and I always aim to present data in a way that is easy to understand, in order to reach meaningful conclusions.</p>
         </section>
 
         <div class="cv-section">
