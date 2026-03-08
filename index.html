@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* تعريف الألوان للوضعين الفاتح والداكن */
         :root {
             --primary: #6432a8;
             --bg: #fcfaff;
@@ -17,7 +16,6 @@
             --text-light: #6432a8;
             --secondary-bg: #f3efff;
             --border: #eeeeee;
-            --shadow: rgba(100, 50, 168, 0.1);
         }
 
         [data-theme="dark"] {
@@ -28,7 +26,6 @@
             --text-light: #a37df0;
             --secondary-bg: #241f3a;
             --border: #2d2845;
-            --shadow: rgba(0, 0, 0, 0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,184 +34,78 @@
             font-family: 'Cairo', sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            transition: background 0.4s, color 0.4s;
-            line-height: 1.6;
+            transition: all 0.4s ease;
         }
 
-        /* Header Section */
         header {
             text-align: center;
             padding: 80px 20px 40px;
             background-color: var(--header-bg);
             border-bottom: 1px solid var(--border);
             position: relative;
-            transition: background 0.4s;
         }
 
-        /* تصميم حاوية الصورة الدائرية */
-        .profile-container {
-            width: 150px;
-            height: 150px;
+        /* حاوية اللوجو الدائري الجديد */
+        .logo-container {
+            width: 160px;
+            height: 160px;
             margin: 0 auto 20px;
+            background: white;
             border-radius: 50%;
-            border: 4px solid var(--primary);
-            background: white; /* خلفية بيضاء لضمان ظهور اللوجو */
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 8px 25px var(--shadow);
-            padding: 15px;
+            box-shadow: 0 10px 25px rgba(100, 50, 168, 0.15);
+            border: 2px solid var(--primary);
         }
 
-        .profile-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
+        .hello-text { font-size: 1.4rem; color: var(--primary); font-weight: 300; display: block; }
+        .name-text { font-size: 2.8rem; font-weight: 700; color: var(--text); margin-bottom: 20px; }
 
-        /* تنسيق النصوص بأحجام مختلفة */
-        .hello-text {
-            font-size: 1.4rem;
-            color: var(--text-light);
-            font-weight: 400;
-            display: block;
-        }
-
-        .name-text {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 20px;
-        }
-
-        /* أيقونات التواصل */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
+        .social-links { display: flex; justify-content: center; gap: 15px; margin: 15px 0; }
         .social-links a {
-            font-size: 20px;
-            color: var(--primary);
-            background: var(--secondary-bg);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: 0.3s;
+            font-size: 18px; color: var(--primary); background: var(--secondary-bg);
+            width: 42px; height: 42px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.3s;
         }
+        .social-links a:hover { background: var(--primary); color: white; transform: translateY(-3px); }
 
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        /* Container & Sections */
-        .container {
-            max-width: 850px;
-            margin: auto;
-            padding: 40px 20px;
-        }
-
+        .container { max-width: 800px; margin: auto; padding: 40px 20px; }
         section {
-            background-color: var(--card-bg);
-            padding: 35px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px var(--shadow);
-            border: 1px solid var(--border);
-            transition: transform 0.3s, background 0.4s;
+            background-color: var(--card-bg); padding: 30px; border-radius: 20px;
+            margin-bottom: 30px; border: 1px solid var(--border);
         }
 
-        h2 {
-            color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        h2::after {
-            content: "";
-            height: 2px;
-            flex: 1;
-            background: var(--border);
-        }
+        h2 { color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        h2::after { content: ""; height: 1px; flex: 1; background: var(--border); }
 
         .cv-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: var(--primary);
-            color: white !important;
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px var(--shadow);
+            display: inline-flex; align-items: center; gap: 10px;
+            background-color: var(--primary); color: white !important;
+            padding: 12px 30px; text-decoration: none; border-radius: 50px;
+            font-weight: 600; transition: 0.3s;
         }
 
-        .cv-btn:hover { transform: scale(1.05); background: var(--primary-dark); }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-item {
-            background: var(--secondary-bg);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .skill-item:hover { background: var(--primary); color: white; }
-        .skill-item i { font-size: 1.8rem; margin-bottom: 10px; display: block; }
-
-        /* Dark Mode Button */
         .theme-toggle {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            background: var(--secondary-bg);
-            color: var(--primary);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: 0.3s;
-        }
-
-        footer { text-align: center; padding: 50px; opacity: 0.6; font-size: 0.9rem; }
-
-        /* تعديلات للموبايل */
-        @media (max-width: 600px) {
-            .name-text { font-size: 2rem; }
-            .profile-container { width: 130px; height: 130px; }
+            position: absolute; left: 20px; top: 20px;
+            background: var(--secondary-bg); color: var(--primary);
+            border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <button class="theme-toggle" id="theme-toggle" title="تغيير الوضع">
-            <i class="fas fa-moon"></i>
-        </button>
+        <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
         
-        <div class="profile-container">
-            <img src="logo.png" alt="Samah Mohmed Logo" onerror="this.src='https://ui-avatars.com/api/?name=Samah+Mohmed&background=6432a8&color=fff&size=200'">
+        <div class="logo-container">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width: 140px;">
+                <circle cx="100" cy="100" r="95" fill="none" stroke="#6432a8" stroke-width="1" stroke-dasharray="4,2"/>
+                <text x="100" y="115" font-family="'serif'" font-size="90" fill="#6432a8" text-anchor="middle" font-style="italic">S</text>
+                <text x="100" y="150" font-family="Cairo" font-size="10" fill="#332d41" text-anchor="middle" letter-spacing="3" font-weight="bold">SAMAH MOHMED</text>
+                <path d="M60 120 L140 120" stroke="#6432a8" stroke-width="0.5" opacity="0.3"/>
+            </svg>
         </div>
         
         <div class="welcome-text">
@@ -232,52 +123,27 @@
     <div class="container">
         <section>
             <h2>About Me</h2>
-            <p>Data Analyst with a passion to uncover the mysteries of data. I believe that data is the best source of guidance for any business decision and I always aim to present data in a way that is easy to understand, in order to reach meaningful conclusions.</p>
+            <p>Data Analyst with a passion to uncover the mysteries of data. I believe that data is the best source of guidance for any business decision.</p>
         </section>
 
-        <div style="text-align: center; margin-bottom: 40px;">
+        <div style="text-align: center; margin-bottom: 30px;">
             <a href="https://drive.google.com/file/d/14bgzBDAcOiLd4_br1J06nI0Z33oNadrR/view?usp=drive_link" target="_blank" class="cv-btn">
-                <i class="fas fa-file-download"></i> Download My CV
+                <i class="fas fa-download"></i> Download CV
             </a>
         </div>
-
-        <section>
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item"><i class="fas fa-file-excel"></i><h4>Excel</h4></div>
-                <div class="skill-item"><i class="fas fa-database"></i><h4>SQL</h4></div>
-                <div class="skill-item"><i class="fab fa-python"></i><h4>Python</h4></div>
-                <div class="skill-item"><i class="fas fa-chart-pie"></i><h4>Tableau</h4></div>
-                <div class="skill-item"><i class="fas fa-chart-line"></i><h4>Power BI</h4></div>
-            </div>
-        </section>
-
-        <section style="background: var(--primary); color: white; text-align: center;">
-            <h2 style="color: white; justify-content: center;">Contact Me</h2>
-            <p>I'm always open to discussing new projects and opportunities.</p>
-            <div class="social-links" style="margin-top: 20px;">
-                <a href="mailto:samah.21moh@gmail.com" style="background: white;"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank" style="background: white;"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/966597722559" target="_blank" style="background: white;"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <p>© 2026 Samah Mohmed - Built with Passion</p>
-    </footer>
+        
+        </div>
 
     <script>
         const btn = document.getElementById('theme-toggle');
-        const icon = btn.querySelector('i');
-        
         btn.onclick = () => {
-            if (document.body.getAttribute('data-theme') === 'dark') {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
                 document.body.removeAttribute('data-theme');
-                icon.className = 'fas fa-moon';
+                btn.innerHTML = '<i class="fas fa-moon"></i>';
             } else {
                 document.body.setAttribute('data-theme', 'dark');
-                icon.className = 'fas fa-sun';
+                btn.innerHTML = '<i class="fas fa-sun"></i>';
             }
         }
     </script>
