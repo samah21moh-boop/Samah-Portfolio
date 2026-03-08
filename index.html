@@ -1,60 +1,31 @@
-<think>
-The user wants me to create a portfolio website that looks exactly like "suha-da-portfolio.netlify.app" but with the purple color (#6432a8) they mentioned earlier. They want:
-
-1. Welcome image first
-2. Name
-3. Contact icons
-4. About Me section
-5. CV icon
-6. Skills section
-7. Projects section
-8. Contact Me section (in English)
-9. Leave the content empty for them to fill in
-
-They want the same structure and wording as the suha-da-portfolio site, but with their purple color scheme.
-
-Since I can't access the external website, I'll create a professional portfolio with the structure they described, using the purple color (#6432a8) and leaving placeholders for them to fill in.
-
-Let me create a complete HTML file with all these sections.
-
-</think>أهلاً بك سماح! 🌟
-
-فهمتِ تماماً! سأصمم لكِ موقعاً بنفس **تصميم سهى** ولكن **باللون البنفسجي #6432a8** الذي اخترتِه، مع **الترتيب الذي طلبتِه** وترك المحتوى فارغاً لتعبئيه.
-
----
-
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Portfolio</title>
+    <title>Portfolio | My Space</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* الألوان الرئيسية - بنفسجي #6432a8 */
-            --primary-color: #6432a8;
-            --primary-light: #8b5cf6;
-            --primary-dark: #4c1d95;
-            --primary-darker: #3b0764;
+            /* درجات بنفسجي أفتح وألطف */
+            --primary-color: #8c52ff; /* درجة أفتح وأنعم */
+            --primary-light: #b388ff; 
+            --primary-dark: #6432a8;
             
-            /* الوضع النهاري */
-            --bg-color: #f8f9fa;
+            --bg-color: #fcfaff;
             --card-bg: #ffffff;
-            --text-color: #2c3e50;
-            --secondary-bg: #e9ecef;
-            --shadow: 0 4px 15px rgba(100, 50, 168, 0.1);
+            --text-color: #443a5a;
+            --secondary-bg: #f3efff;
+            --shadow: 0 5px 20px rgba(140, 82, 255, 0.1);
         }
 
-        /* الوضع الليلي */
         [data-theme="dark"] {
-            --bg-color: #0f0f1a;
-            --card-bg: #1a1a2e;
-            --text-color: #e0e0e0;
-            --secondary-bg: #16213e;
-            --shadow: 0 4px 15px rgba(100, 50, 168, 0.3);
+            --bg-color: #0d0b14;
+            --card-bg: #161421;
+            --text-color: #e0dced;
+            --secondary-bg: #1e1a2e;
+            --shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
         }
 
         * {
@@ -64,7 +35,7 @@ Let me create a complete HTML file with all these sections.
         }
 
         body {
-            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: all 0.3s ease;
@@ -74,286 +45,202 @@ Let me create a complete HTML file with all these sections.
         /* Header */
         header {
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(100, 50, 168, 0.3);
+            position: relative;
         }
 
         .welcome-image {
-            width: 150px;
-            height: 150px;
+            width: 120px; /* أصغر قليلاً */
+            height: 120px;
             border-radius: 50%;
-            border: 4px solid white;
-            margin: 0 auto 20px;
-            object-fit: cover;
-            background: rgba(255,255,255,0.2);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            margin: 0 auto 15px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
         }
 
+        .welcome-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .welcome-image i { font-size: 2.5rem; }
+
         .profile-name {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 5px;
         }
 
         .profile-title {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            opacity: 0.95;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
         }
 
+        /* تصغير أيقونات التواصل */
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin: 25px 0;
-            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
         }
 
         .social-links a {
-            font-size: 28px;
+            font-size: 18px; /* حجم أصغر للأيقونة */
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 25px;
-        }
-
-        .social-links a:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-5px);
-        }
-
-        .phone-number {
-            font-size: 1.1rem;
-            margin-top: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
         }
 
-        /* Theme Toggle */
-        .theme-toggle {
-            position: absolute;
-            left: 30px;
-            top: 50%;
-            transform: translateY(-50%);
+        .social-links a:hover {
             background: white;
             color: var(--primary-color);
-            border: none;
-            padding: 12px 18px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-50%) scale(1.1);
+            transform: translateY(-3px);
         }
 
         /* Container */
         .container {
-            max-width: 1000px;
+            max-width: 850px;
             margin: auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
         }
 
-        /* Sections */
         section {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             background: var(--card-bg);
-            padding: 35px;
-            border-radius: 20px;
+            padding: 30px;
+            border-radius: 15px;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--primary-color);
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(100, 50, 168, 0.2);
+            border: 1px solid rgba(140, 82, 255, 0.1);
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--primary-color);
-            margin-bottom: 25px;
-            border-bottom: 3px solid var(--primary-light);
-            display: inline-block;
-            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* CV Button */
+        h2::after {
+            content: "";
+            height: 2px;
+            flex: 1;
+            background: var(--secondary-bg);
+        }
+
+        /* CV Button - أيقونة أصغر */
         .cv-section {
             text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            border-radius: 20px;
-            margin: 30px 0;
-            box-shadow: var(--shadow);
+            margin: 20px 0;
         }
 
         .cv-btn {
-            display: inline-block;
-            background: white;
-            color: var(--primary-color);
-            padding: 15px 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 25px;
             text-decoration: none;
             border-radius: 30px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
 
-        .cv-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
+        .cv-btn i { font-size: 14px; } /* تصغير أيقونة السي في */
 
-        /* Skills */
+        .cv-btn:hover { background: var(--primary-dark); }
+
+        /* Skills - أيقونات أصغر */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
         }
 
         .skill-item {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            padding: 25px;
-            border-radius: 15px;
+            background: var(--secondary-bg);
+            padding: 15px;
+            border-radius: 12px;
             text-align: center;
-            transition: all 0.3s ease;
-            color: white;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(100, 50, 168, 0.4);
         }
 
         .skill-item i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem; /* أيقونات مهارات صغيرة */
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: block;
         }
 
-        .skill-item h4 {
-            font-size: 1.1rem;
-        }
+        .skill-item h4 { font-size: 0.9rem; }
 
         /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
         .project-card {
             background: var(--secondary-bg);
-            padding: 25px;
-            border-radius: 15px;
-            border-right: 5px solid var(--primary-color);
-            transition: all 0.3s ease;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-right: 4px solid var(--primary-color);
         }
 
-        .project-card:hover {
+        .project-card h3 { font-size: 1.1rem; color: var(--primary-color); margin-bottom: 5px; }
+        .project-card p { font-size: 0.9rem; opacity: 0.8; }
+
+        /* Contact Section English */
+        .contact-english {
             background: var(--primary-color);
             color: white;
+            text-align: center;
         }
 
-        .project-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-        }
+        .contact-english h2 { color: white; justify-content: center; }
+        .contact-english h2::after { display: none; }
+        .contact-english p { font-size: 0.9rem; opacity: 0.9; margin-bottom: 15px; }
 
-        .project-card:hover h3 {
-            color: white;
-        }
-
-        .project-card p {
-            color: var(--text-color);
-        }
-
-        .project-card:hover p {
-            color: white;
-        }
-
-        /* Contact Me English */
-        .contact-english {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            padding: 35px;
-            border-radius: 20px;
-            margin-top: 30px;
-            border: 2px solid var(--primary-light);
-        }
-
-        .contact-english h2 {
-            color: white;
-            border-bottom: 2px solid white;
-        }
-
-        .contact-english p {
-            color: white;
-            margin-bottom: 18px;
-            font-size: 1.05rem;
-        }
-
-        .contact-english .social-links {
-            justify-content: center;
-        }
-
-        .contact-english .social-links a {
-            color: white;
+        /* Theme Toggle */
+        .theme-toggle {
+            position: absolute;
+            left: 20px;
+            top: 20px;
             background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
         }
 
-        .contact-english .social-links a:hover {
-            background: rgba(255,255,255,0.35);
-        }
-
-        /* Footer */
         footer {
             text-align: center;
-            padding: 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            margin-top: 60px;
+            padding: 30px;
+            font-size: 0.8rem;
+            opacity: 0.6;
         }
 
-        footer p {
-            opacity: 0.9;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .profile-name { font-size: 2rem; }
-            .theme-toggle { 
-                position: relative; 
-                left: auto; 
-                top: auto; 
-                transform: none; 
-                margin: 20px auto; 
-            }
-            header { position: relative; }
-            .social-links { flex-direction: column; align-items: center; }
-            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
-            .projects-grid { grid-template-columns: 1fr; }
+        @media (max-width: 600px) {
+            .profile-name { font-size: 1.8rem; }
+            .container { padding: 15px; }
         }
     </style>
 </head>
@@ -364,138 +251,82 @@ Let me create a complete HTML file with all these sections.
             <i class="fas fa-moon"></i>
         </button>
         
-        <!-- صورة ترحيب -->
         <div class="welcome-image">
-            <i class="fas fa-user"></i>
+            <i class="fas fa-user-circle"></i>
         </div>
         
-        <h1 class="profile-name">[اكتبي اسمك هنا]</h1>
-        <p class="profile-title">[اكتبي المسمى الوظيفي هنا]</p>
+        <h1 class="profile-name">[Name Here]</h1>
+        <p class="profile-title">[Your Bio/Title Here]</p>
         
         <div class="social-links">
-            <a href="[اكتبي رابط الايميل هنا]">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
-            </a>
-            <a href="[اكتبي رابط لينكدان هنا]" target="_blank">
-                <i class="fab fa-linkedin"></i>
-                <span>LinkedIn</span>
-            </a>
-            <p class="phone-number">
-                <i class="fas fa-phone"></i> [اكتبي رقم الهاتف هنا]
-            </p>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
     </header>
 
     <div class="container">
-        <!-- About Me -->
-        <section id="about">
+        <section>
             <h2>About Me</h2>
-            <p>[اكتبي نبذة عنك هنا - باللغة العربية]</p>
-            <p style="margin-top: 15px;">[اكتبي نبذة عنك هنا - باللغة الإنجليزية]</p>
+            <p>[مساحة فارغة لكتابة نبذة عنك بالعربي أو الإنجليزي]</p>
         </section>
 
-        <!-- CV Button -->
         <div class="cv-section">
-            <a href="[اكتبي رابط ملف السيرة الذاتية هنا]" class="cv-btn" target="_blank">
-                <i class="fas fa-file-download"></i> Download CV
+            <a href="#" class="cv-btn">
+                <i class="fas fa-download"></i> Download CV
             </a>
         </div>
 
-        <!-- Skills -->
-        <section id="skills">
+        <section>
             <h2>Skills</h2>
             <div class="skills-grid">
-                <div class="skill-item">
-                    <i class="fas fa-chart-bar"></i>
-                    <h4>[المهارة 1]</h4>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-database"></i>
-                    <h4>[المهارة 2]</h4>
-                </div>
-                <div class="skill-item">
-                    <i class="fab fa-python"></i>
-                    <h4>[المهارة 3]</h4>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-table"></i>
-                    <h4>[المهارة 4]</h4>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-file-excel"></i>
-                    <h4>[المهارة 5]</h4>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-certificate"></i>
-                    <h4>[المهارة 6]</h4>
-                </div>
+                <div class="skill-item"><i class="fas fa-code"></i><h4>Skill 1</h4></div>
+                <div class="skill-item"><i class="fas fa-palette"></i><h4>Skill 2</h4></div>
+                <div class="skill-item"><i class="fas fa-terminal"></i><h4>Skill 3</h4></div>
+                <div class="skill-item"><i class="fas fa-laptop-code"></i><h4>Skill 4</h4></div>
             </div>
         </section>
 
-        <!-- Projects -->
-        <section id="projects">
+        <section>
             <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>[اسم المشروع 1]</h3>
-                    <p>[وصف المشروع 1]</p>
-                </div>
-                <div class="project-card">
-                    <h3>[اسم المشروع 2]</h3>
-                    <p>[وصف المشروع 2]</p>
-                </div>
-                <div class="project-card">
-                    <h3>[اسم المشروع 3]</h3>
-                    <p>[وصف المشروع 3]</p>
-                </div>
+            <div class="project-card">
+                <h3>Project Name</h3>
+                <p>Description of your amazing work goes here.</p>
+            </div>
+            <div class="project-card">
+                <h3>Project Name</h3>
+                <p>Description of your amazing work goes here.</p>
             </div>
         </section>
 
-        <!-- Contact Me English -->
         <section class="contact-english">
             <h2>Contact Me</h2>
-            <p>I'm always open to discussing new opportunities, projects, or just having a conversation about data analysis and business intelligence.</p>
-            <p>Feel free to reach out to me through any of the platforms below!</p>
+            <p>I'm available for new projects and collaborations. Reach out via email or social media.</p>
             <div class="social-links">
-                <a href="[اكتبي رابط الايميل هنا]">
-                    <i class="fas fa-envelope"></i>
-                    <span>Email</span>
-                </a>
-                <a href="[اكتبي رابط لينكدان هنا]" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <p class="phone-number">
-                    <i class="fas fa-phone"></i> [اكتبي رقم الهاتف هنا]
-                </p>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة &copy; 2025</p>
+        <p>© 2026 - All Rights Reserved</p>
     </footer>
 
     <script>
-        const toggleButton = document.getElementById('theme-toggle');
-        const body = document.body;
-        const icon = toggleButton.querySelector('i');
-
-        toggleButton.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            
-            if (currentTheme === 'dark') {
-                body.setAttribute('data-theme', 'light');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+        const btn = document.getElementById('theme-toggle');
+        const icon = btn.querySelector('i');
+        btn.onclick = () => {
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                document.body.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
             } else {
-                body.setAttribute('data-theme', 'dark');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+                document.body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
             }
-        });
+        }
     </script>
 </body>
 </html>
-```
