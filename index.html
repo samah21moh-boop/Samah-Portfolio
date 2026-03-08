@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analyst | Portfolio</title>
+    <title>Data Analyst Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* درجات الألوان للوضع النهاري بناءً على اختيارك #6432a8 */
             --bg-body: #f3effb; 
             --card-bg: #ffffff;
             --text-main: #2d1b4d;
@@ -18,7 +17,6 @@
         }
 
         [data-theme="dark"] {
-            /* درجات الألوان للوضع الليلي */
             --bg-body: #0d0915;
             --card-bg: #1a1425;
             --text-main: #e0d5f2;
@@ -27,15 +25,14 @@
         }
 
         body {
-            margin: 0; padding: 80px 20px;
+            margin: 0; padding: 60px 20px;
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
             display: flex; flex-direction: column; align-items: center;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
-        /* زر التبديل */
         .theme-toggle {
             position: fixed; top: 25px; right: 25px;
             background: var(--accent); border: none;
@@ -45,107 +42,92 @@
             display: flex; align-items: center; justify-content: center;
         }
 
-        /* قسم التعريف - بساطة سهى */
-        .header {
-            text-align: center; max-width: 700px; margin-bottom: 70px;
-        }
+        .container { max-width: 850px; width: 100%; }
 
-        .header h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 600; color: var(--accent); }
-        .header p { font-size: 1.1rem; line-height: 1.8; opacity: 0.9; }
-
-        .social-nav { display: flex; justify-content: center; gap: 25px; margin-top: 30px; }
-        .social-nav a { color: var(--text-main); font-size: 24px; transition: 0.3s; text-decoration: none; }
-        .social-nav a:hover { color: var(--accent); transform: translateY(-3px); }
-
-        /* شبكة المشاريع */
-        .projects-section { width: 100%; max-width: 900px; }
-        .projects-title { margin-bottom: 30px; font-weight: 600; font-size: 1.5rem; border-right: 4px solid var(--accent); padding-right: 15px; text-align: left;}
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
+        /* قسم التعريف */
+        .profile-card {
             background: var(--card-bg);
-            padding: 35px; border-radius: 24px;
+            padding: 40px; border-radius: 30px;
             box-shadow: 0 10px 30px var(--shadow);
-            transition: 0.4s; border: 1px solid transparent;
-            text-align: left;
+            margin-bottom: 40px; text-align: center;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 40px rgba(100, 50, 168, 0.15);
+        .profile-card h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--accent); }
+        .about-text { font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; text-align: center; }
+
+        /* جدول الأدوات التقنية */
+        .tools-table {
+            width: 100%; border-collapse: collapse; margin-top: 20px;
+            background: var(--bg-body); border-radius: 15px; overflow: hidden;
         }
 
-        .card i { font-size: 32px; color: var(--accent); margin-bottom: 20px; display: block; }
-        .card h3 { margin: 0 0 12px 0; font-size: 1.2rem; font-weight: 600; }
-        .card p { font-size: 0.9rem; opacity: 0.8; line-height: 1.6; margin-bottom: 20px; }
-        
-        .tag {
-            display: inline-block; background: rgba(100, 50, 168, 0.08);
-            padding: 5px 14px; border-radius: 20px; font-size: 11px;
-            font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;
+        .tools-table th, .tools-table td {
+            padding: 15px; text-align: left; border-bottom: 1px solid rgba(100, 50, 168, 0.1);
         }
 
-        footer { margin-top: 80px; font-size: 0.8rem; opacity: 0.6; }
+        .tools-table th { background: var(--accent); color: white; font-weight: 600; }
+        .tools-table td:first-child { font-weight: 600; color: var(--accent); width: 30%; }
+
+        /* قسم الأهداف والمشاريع */
+        .highlight-box {
+            border-right: 4px solid var(--accent); padding: 20px;
+            background: rgba(100, 50, 168, 0.05); margin: 25px 0;
+            border-radius: 0 15px 15px 0; text-align: left;
+        }
+
+        .social-nav { display: flex; justify-content: center; gap: 20px; margin-top: 25px; }
+        .social-nav a { color: var(--text-main); font-size: 24px; transition: 0.3s; }
+        .social-nav a:hover { color: var(--accent); transform: scale(1.1); }
 
     </style>
 </head>
 <body>
 
-    <button class="theme-toggle" onclick="toggleMode()" id="modeBtn" title="Toggle Dark/Light Mode">
+    <button class="theme-toggle" onclick="toggleMode()" id="modeBtn">
         <i class="fas fa-moon"></i>
     </button>
 
-    <div class="header">
-        <h1>[Your Name]</h1>
-        <p>
-            I’m a data enthusiast with a passion for turning complex numbers into clear, impactful stories. 
-            Currently, I’m diving deep into the world of Data Analytics—mastering SQL for data querying and Python for analysis. 
-            I love bringing data to life through interactive Power BI dashboards, backed by a solid foundation in R and NumPy. 
-            My focus is on building a bridge between raw data and meaningful insights to help solve real-world challenges.
-        </p>
-        <div class="social-nav">
-            <a href="https://linkedin.com/in/YOURNAME" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="mailto:yourname@email.com"><i class="far fa-envelope"></i></a>
-            <a href="https://github.com/YOURNAME" target="_blank"><i class="fab fa-github"></i></a>
+    <div class="container">
+        <div class="profile-card">
+            <h1>[Your Name]</h1>
+            
+            <div class="about-text">
+                <strong>📋 About Me:</strong><br>
+                Data Analyst with a passion to uncover the mysteries of data. I believe that data is the best source of guidance for any business decision and I always aim to present data in a way that is easy to understand, in order to reach meaningful conclusions.
+            </div>
+
+            <div class="highlight-box">
+                <strong>🎯 Currently working on:</strong><br>
+                Data Analysis Projects to strengthen my data analysis skills by creating engaging projects that not only put my data analysis skills into action but also bring a creative mindset to the table.
+            </div>
+
+            <h3>🛠️ Technical Tools</h3>
+            <table class="tools-table">
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Application</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Power BI</td><td>Creating interactive dashboards and visual reports</td></tr>
+                    <tr><td>SQL</td><td>Data querying and database management</td></tr>
+                    <tr><td>Python</td><td>Data analysis, cleaning, and processing</td></tr>
+                    <tr><td>NumPy</td><td>Advanced numerical operations on arrays</td></tr>
+                </tbody>
+            </table>
+
+            <p style="margin-top: 30px; font-style: italic; font-weight: 600; color: var(--accent);">
+                "My Goal Is To Be A Bridge Between The Data And The Actions, So I Can Influence Creating A More Intelligent World Of Business And Innovation."
+            </p>
+
+            <div class="social-nav">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
         </div>
     </div>
-
-    <div class="projects-section">
-        <h2 class="projects-title">Featured Projects</h2>
-        
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-chart-line"></i>
-                <h3>Sales Insights</h3>
-                <p>Interactive Power BI dashboard focused on sales performance and customer segmentation to drive data-backed decisions.</p>
-                <span class="tag">Power BI</span>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-terminal"></i>
-                <h3>Data Extraction</h3>
-                <p>Utilizing advanced SQL queries to clean and retrieve meaningful insights from complex retail databases.</p>
-                <span class="tag">SQL</span>
-            </div>
-
-            <div class="card">
-                <i class="fab fa-python"></i>
-                <h3>Statistical Computing</h3>
-                <p>Using NumPy and Python to perform exploratory data analysis and automate data processing tasks.</p>
-                <span class="tag">Python / NumPy / R</span>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        © 2026 Crafted with Passion
-    </footer>
 
     <script>
         function toggleMode() {
@@ -161,7 +143,6 @@
                 localStorage.setItem('theme', 'dark');
             }
         }
-        // Load saved theme
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             document.getElementById('modeBtn').innerHTML = '<i class="fas fa-sun"></i>';
