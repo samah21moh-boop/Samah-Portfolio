@@ -1,89 +1,123 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code2 } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, FileText, ExternalLink, Code, Database, Layout, Send } from 'lucide-react';
 
-const Portfolio = () => {
+const MyPortfolio = () => {
+  // تدرجات الألوان بناءً على اختيارك
+  const primaryColor = "#6432a8";
+  const lightPurple = "#9266d4";
+  const darkBg = "#0a0514"; // أغمق من البنفسجي ليعطي فخامة
+
   return (
-    <div className="min-h-screen bg-[#120a1f] text-white font-sans selection:bg-[#6432a8] selection:text-white">
+    <div className="min-h-screen bg-[#0a0514] text-white font-sans selection:bg-[#6432a8]">
       
-      {/* Navbar - القائمة العلوية */}
-      <nav className="fixed w-full z-50 px-6 py-4 backdrop-blur-md bg-[#120a1f]/80 border-b border-[#1e1233]">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="text-2xl font-bold tracking-tighter text-[#9266d4]">PORTFOLIO.</div>
-          <div className="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-gray-400">
-            <a href="#about" className="hover:text-[#6432a8] transition-colors">About</a>
-            <a href="#projects" className="hover:text-[#6432a8] transition-colors">Projects</a>
-            <a href="#contact" className="hover:text-[#6432a8] transition-colors">Contact</a>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section - الواجهة الرئيسية */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        {/* تأثير الإضاءة الخلفية */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#6432a8]/20 rounded-full blur-[120px] -z-10"></div>
+      {/* 1. Hero Section (صورة الترحيب والاسم وايقونات التواصل) */}
+      <section className="min-h-screen flex flex-col justify-center items-center px-6 relative overflow-hidden">
+        {/* تأثير توهج خلفية */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[#6432a8]/30 blur-[120px] rounded-full"></div>
         
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-[#9266d4] bg-clip-text text-transparent">
-            صانع تجارب رقمية مميزة
-          </h1>
-          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            أقوم بتحويل الأفكار إلى واقع ملموس من خلال تصميم وبرمجة واجهات عصرية تركز على تجربة المستخدم.
-          </p>
-          <div className="flex justify-center gap-4">
-            <button className="bg-[#6432a8] hover:bg-[#9266d4] text-white px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105">
-              شاهد أعمالي
-            </button>
-            <button className="border border-[#6432a8] text-[#9266d4] hover:bg-[#6432a8]/10 px-8 py-3 rounded-full font-medium transition-all">
-              تواصل معي
-            </button>
+        {/* مكان صورة الترحيب */}
+        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#6432a8] mb-8 overflow-hidden bg-[#1e1233] flex items-center justify-center">
+           {/* ضع رابط صورتك هنا مكان الايقونة */}
+           <img src="/api/placeholder/160/160" alt="Profile" className="w-full h-full object-cover" />
+        </div>
+
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+          Hi, I'm <span className="text-[#9266d4]">Your Name</span>
+        </h1>
+        <p className="text-gray-400 text-lg md:text-xl mb-8">Software Engineer & Creative Developer</p>
+
+        {/* أيقونات التواصل الاجتماعي */}
+        <div className="flex gap-6 mb-12">
+          <a href="#" className="hover:text-[#9266d4] transition-all transform hover:scale-110"><Github size={24} /></a>
+          <a href="#" className="hover:text-[#9266d4] transition-all transform hover:scale-110"><Linkedin size={24} /></a>
+          <a href="#" className="hover:text-[#9266d4] transition-all transform hover:scale-110"><Twitter size={24} /></a>
+          <a href="#" className="hover:text-[#9266d4] transition-all transform hover:scale-110"><Mail size={24} /></a>
+        </div>
+      </section>
+
+      {/* 2. About Me Section */}
+      <section className="py-20 px-6 max-w-3xl mx-auto text-center border-t border-white/5">
+        <h2 className="text-3xl font-bold mb-8 uppercase tracking-widest text-[#9266d4]">About Me</h2>
+        <p className="text-gray-300 leading-relaxed text-lg">
+          I am a passionate developer focused on building functional and beautiful digital experiences. 
+          I love solving complex problems and turning them into simple, elegant designs.
+        </p>
+      </section>
+
+      {/* 3. Resume/CV Button */}
+      <section className="pb-20 text-center">
+        <a href="#" className="inline-flex items-center gap-2 bg-[#6432a8] hover:bg-[#9266d4] px-8 py-4 rounded-full font-bold transition-all transform hover:-translate-y-1">
+          <FileText size={20} />
+          DOWNLOAD CV
+        </a>
+      </section>
+
+      {/* 4. Skills Section */}
+      <section className="py-20 px-6 bg-[#120a1f]">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center uppercase tracking-widest text-[#9266d4]">Skills</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="p-6 bg-[#1e1233] rounded-xl border border-white/5 hover:border-[#6432a8]/50 transition-colors text-center">
+              <Code className="mx-auto mb-4 text-[#9266d4]" />
+              <h3 className="font-bold">Frontend</h3>
+              <p className="text-xs text-gray-500 mt-2">React, Tailwind, Next.js</p>
+            </div>
+            <div className="p-6 bg-[#1e1233] rounded-xl border border-white/5 hover:border-[#6432a8]/50 transition-colors text-center">
+              <Database className="mx-auto mb-4 text-[#9266d4]" />
+              <h3 className="font-bold">Backend</h3>
+              <p className="text-xs text-gray-500 mt-2">Node.js, PostgreSQL, API</p>
+            </div>
+            <div className="p-6 bg-[#1e1233] rounded-xl border border-white/5 hover:border-[#6432a8]/50 transition-colors text-center">
+              <Layout className="mx-auto mb-4 text-[#9266d4]" />
+              <h3 className="font-bold">UI/UX</h3>
+              <p className="text-xs text-gray-500 mt-2">Figma, Adobe XD</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section - قسم المشاريع */}
-      <section id="projects" className="py-20 px-6 bg-[#120a1f]">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl font-bold">المشاريع المختارة</h2>
-            <div className="h-[1px] flex-1 bg-[#1e1233]"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Project Card - مثال لمشروع */}
-            {[1, 2].map((i) => (
-              <div key={i} className="group relative bg-[#1e1233] border border-white/5 rounded-2xl overflow-hidden hover:border-[#6432a8]/50 transition-all">
-                <div className="h-64 bg-[#6432a8]/10 flex items-center justify-center group-hover:bg-[#6432a8]/20 transition-all">
-                   <Code2 size={48} className="text-[#6432a8]" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">اسم المشروع الذكي {i}</h3>
-                  <p className="text-gray-400 text-sm mb-4">وصف مختصر للمشروع والتقنيات المستخدمة فيه مثل React و Tailwind CSS.</p>
-                  <div className="flex gap-4">
-                    <span className="text-xs text-[#9266d4] font-mono">React</span>
-                    <span className="text-xs text-[#9266d4] font-mono">Animation</span>
-                  </div>
-                  <ExternalLink size={20} className="absolute top-6 right-6 text-gray-500 group-hover:text-[#9266d4]" />
-                </div>
+      {/* 5. Projects Section */}
+      <section className="py-20 px-6 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold mb-12 uppercase tracking-widest text-[#9266d4]">Projects</h2>
+        <div className="grid md:grid-cols-2 gap-10">
+          {/* Project Item */}
+          {[1, 2].map((p) => (
+            <div key={p} className="group relative">
+              <div className="aspect-video bg-[#1e1233] rounded-2xl mb-4 overflow-hidden border border-white/5 group-hover:border-[#6432a8]/50 transition-all">
+                <div className="w-full h-full flex items-center justify-center text-gray-700">Project Image</div>
               </div>
-            ))}
-          </div>
+              <h3 className="text-xl font-bold mb-2 uppercase">Project Name {p}</h3>
+              <p className="text-gray-400 mb-4 text-sm">A brief description of what this project does and the technology stack.</p>
+              <div className="flex gap-4">
+                <a href="#" className="text-sm text-[#9266d4] flex items-center gap-1 hover:underline"><ExternalLink size={14}/> Demo</a>
+                <a href="#" className="text-sm text-[#9266d4] flex items-center gap-1 hover:underline"><Github size={14}/> Code</a>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Footer - التذييل */}
-      <footer id="contact" className="py-20 px-6 border-t border-[#1e1233]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">لنعمل معاً</h2>
-          <div className="flex justify-center space-x-8 mb-12">
-            <Github className="cursor-pointer hover:text-[#6432a8] transition-colors" />
-            <Linkedin className="cursor-pointer hover:text-[#6432a8] transition-colors" />
-            <Mail className="cursor-pointer hover:text-[#6432a8] transition-colors" />
-          </div>
-          <p className="text-gray-500 text-sm">© 2026 جميع الحقوق محفوظة.</p>
+      {/* 6. Contact Me Section */}
+      <section className="py-20 px-6 bg-[#120a1f] border-t border-white/5">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-6 uppercase tracking-tighter">Get In Touch</h2>
+          <p className="text-gray-400 mb-10 text-lg">
+            I'm currently looking for new opportunities. My inbox is always open. 
+            Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          </p>
+          <a href="mailto:your.email@example.com" className="inline-flex items-center gap-3 border-2 border-[#6432a8] text-white px-10 py-4 rounded-full font-bold hover:bg-[#6432a8] transition-all">
+            <Send size={18} />
+            SAY HELLO
+          </a>
         </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-10 text-center text-gray-600 text-xs border-t border-white/5">
+        <p>Built with ❤️ by Your Name — 2026</p>
       </footer>
     </div>
   );
 };
 
-export default Portfolio;
+export default MyPortfolio;
