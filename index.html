@@ -1,162 +1,84 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | أعمالي</title>
+    <title>Data Analyst | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-body: #fff0f5; 
+            /* درجات الألوان للوضع النهاري بناءً على اختيارك #6432a8 */
+            --bg-body: #f3effb; 
             --card-bg: #ffffff;
-            --text-main: #4a4a4a;
-            --accent: #ffb6c1; 
-            --shadow: rgba(0, 0, 0, 0.05);
+            --text-main: #2d1b4d;
+            --accent: #6432a8; 
+            --shadow: rgba(100, 50, 168, 0.1);
         }
 
         [data-theme="dark"] {
-            --bg-body: #121212;
-            --card-bg: #1e1e1e;
-            --text-main: #ffd1dc;
-            --accent: #ff69b4;
-            --shadow: rgba(0, 0, 0, 0.3);
+            /* درجات الألوان للوضع الليلي */
+            --bg-body: #0d0915;
+            --card-bg: #1a1425;
+            --text-main: #e0d5f2;
+            --accent: #9d66eb;
+            --shadow: rgba(0, 0, 0, 0.4);
         }
 
         body {
-            margin: 0; padding: 40px 0;
-            font-family: 'Cairo', sans-serif;
+            margin: 0; padding: 80px 20px;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
             display: flex; flex-direction: column; align-items: center;
             transition: all 0.4s ease;
         }
 
+        /* زر التبديل */
         .theme-toggle {
-            position: fixed; top: 20px; right: 20px;
-            background: var(--card-bg); border: 1px solid var(--accent);
-            color: var(--text-main); padding: 8px 15px; border-radius: 20px;
-            cursor: pointer; z-index: 1000;
+            position: fixed; top: 25px; right: 25px;
+            background: var(--accent); border: none;
+            color: white; padding: 10px; border-radius: 50%;
+            cursor: pointer; z-index: 1000; width: 45px; height: 45px;
+            box-shadow: 0 4px 12px var(--shadow);
+            display: flex; align-items: center; justify-content: center;
         }
 
-        /* القسم العلوي - التعريف */
-        .profile-section {
-            background: var(--card-bg);
-            width: 90%; max-width: 800px;
-            padding: 30px; border-radius: 25px;
-            text-align: center; box-shadow: 0 10px 25px var(--shadow);
-            margin-bottom: 40px;
+        /* قسم التعريف - بساطة سهى */
+        .header {
+            text-align: center; max-width: 700px; margin-bottom: 70px;
         }
 
-        .avatar {
-            width: 100px; height: 100px; border-radius: 50%;
-            background: var(--accent); margin: 0 auto 15px;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 40px; color: white;
-        }
+        .header h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 600; color: var(--accent); }
+        .header p { font-size: 1.1rem; line-height: 1.8; opacity: 0.9; }
 
-        /* قسم الأعمال - الشبكة */
-        .projects-grid {
+        .social-nav { display: flex; justify-content: center; gap: 25px; margin-top: 30px; }
+        .social-nav a { color: var(--text-main); font-size: 24px; transition: 0.3s; text-decoration: none; }
+        .social-nav a:hover { color: var(--accent); transform: translateY(-3px); }
+
+        /* شبكة المشاريع */
+        .projects-section { width: 100%; max-width: 900px; }
+        .projects-title { margin-bottom: 30px; font-weight: 600; font-size: 1.5rem; border-right: 4px solid var(--accent); padding-right: 15px; text-align: left;}
+        
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; width: 90%; max-width: 900px;
+            gap: 25px;
         }
 
-        .project-card {
+        .card {
             background: var(--card-bg);
-            border-radius: 20px; overflow: hidden;
-            box-shadow: 0 8px 20px var(--shadow);
-            transition: 0.3s; border: 1px solid transparent;
+            padding: 35px; border-radius: 24px;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: 0.4s; border: 1px solid transparent;
+            text-align: left;
         }
 
-        .project-card:hover {
+        .card:hover {
             transform: translateY(-10px);
             border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(100, 50, 168, 0.15);
         }
 
-        .project-img {
-            width: 100%; height: 160px;
-            background: var(--accent);
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 30px;
-        }
-
-        .project-info { padding: 20px; text-align: right; }
-        .project-info h3 { margin: 0 0 10px 0; font-size: 18px; }
-        .project-info p { font-size: 13px; opacity: 0.8; margin-bottom: 15px; }
-
-        .project-link {
-            text-decoration: none; color: var(--accent);
-            font-weight: bold; font-size: 14px;
-        }
-
-        .social-icons { margin-top: 15px; display: flex; justify-content: center; gap: 15px; }
-        .social-icons a { color: var(--text-main); font-size: 20px; transition: 0.3s; }
-        .social-icons a:hover { color: var(--accent); }
-    </style>
-</head>
-<body>
-
-    <button class="theme-toggle" onclick="toggleMode()" id="modeBtn">
-        <i class="fas fa-moon"></i> وضع الليل
-    </button>
-
-    <div class="profile-section">
-        <div class="avatar"><i class="fas fa-code"></i></div>
-        <h1>اسمك هنا</h1>
-        <p>مرحباً بك في عالمي البرمجي، هنا أضع لمساتي في تصميم وتطوير المواقع.</p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-        </div>
-    </div>
-
-    <h2 style="margin-bottom: 30px;">أبرز أعمالي ✨</h2>
-    <div class="projects-grid">
-        
-        <div class="project-card">
-            <div class="project-img"><i class="fas fa-laptop-code"></i></div>
-            <div class="project-info">
-                <h3>اسم المشروع الأول</h3>
-                <p>وصف مختصر للمشروع وما هي التقنيات التي استخدمتها فيه (مثل HTML/CSS).</p>
-                <a href="#" class="project-link">عرض المشروع ←</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-img"><i class="fas fa-mobile-alt"></i></div>
-            <div class="project-info">
-                <h3>تطبيق جوال</h3>
-                <p>تصميم واجهة مستخدم احترافية لتطبيق توصيل طلبات باللون الوردي.</p>
-                <a href="#" class="project-link">عرض المشروع ←</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-img"><i class="fas fa-paint-brush"></i></div>
-            <div class="project-info">
-                <h3>هوية بصرية</h3>
-                <p>تصميم شعار وهويّة بصرية متكاملة لبراند تجاري ناشئ.</p>
-                <a href="#" class="project-link">عرض المشروع ←</a>
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        function toggleMode() {
-            const body = document.documentElement;
-            const btn = document.getElementById('modeBtn');
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                btn.innerHTML = '<i class="fas fa-moon"></i> وضع الليل';
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                btn.innerHTML = '<i class="fas fa-sun"></i> وضع النهار';
-            }
-        }
-    </script>
-</body>
-</html>
+        .card i { font-size: 32px; color: var(--accent); margin
