@@ -291,3 +291,190 @@
 
         .theme-toggle {
             position: absolute;
+            left: 20px;
+            top: 20px;
+            background: var(--secondary-bg);
+            color: var(--primary);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+
+        <div class="logo-container">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width: 140px;">
+                <circle cx="100" cy="100" r="95" fill="none" stroke="#6432a8" stroke-width="1" stroke-dasharray="4,2"/>
+                <text x="100" y="110" font-family="serif" font-size="90" fill="#6432a8" text-anchor="middle" font-style="italic">S</text>
+                <text x="100" y="150" font-family="Cairo" font-size="10" fill="#332d41" text-anchor="middle" letter-spacing="2" font-weight="bold">SAMAH MOHAMMED</text>
+                <path d="M70 125 Q 100 100, 130 125" stroke="#6432a8" stroke-width="1" fill="none" opacity="0.4"/>
+            </svg>
+        </div>
+
+        <div class="welcome-text">
+            <span class="hello-text">Hello,</span>
+            <h1 class="name-text">Samah Mohammed</h1>
+        </div>
+
+        <div class="social-links">
+            <a href="https://github.com/samah21moh-boop" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:samah.21moh@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/966597722559" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>About Me</h2>
+            <p style="direction: ltr; text-align: left;">Data &amp; Business Analyst with 2+ years of experience in healthcare billing, financial reconciliation, and data quality. Skilled in SQL, Python, Power BI, and Excel, with hands-on experience analyzing financial and census data to detect discrepancies and deliver clear reports. Mathematics graduate with a strong focus on accuracy and turning raw data into insights that support decision-making.</p>
+        </section>
+
+        <div style="text-align: center; margin-bottom: 40px;">
+            <a href="https://drive.google.com/file/d/1Q3H1q5lYpX9CN-4DO6Jj0iIziooqU6rd/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="cv-btn">
+                <i class="fas fa-download"></i> Download My CV
+            </a>
+        </div>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item"><i class="fas fa-file-excel"></i><h4>Excel</h4></div>
+                <div class="skill-item"><i class="fas fa-database"></i><h4>SQL</h4></div>
+                <div class="skill-item"><i class="fab fa-python"></i><h4>Python</h4></div>
+                <div class="skill-item"><i class="fas fa-chart-bar"></i><h4>Power BI</h4></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+
+            <!-- 1. مشروع تحليل بيانات المستشفيات -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img
+                        src="https://raw.githubusercontent.com/samah21moh-boop/image/main/Healthcare_Billing_Dashboard_Overview.png.png"
+                        alt="Healthcare Billing Data Analysis Dashboard"
+                    />
+                </div>
+                <div class="project-content">
+                    <h3>Healthcare Billing Data Analysis</h3>
+                    <p>
+                        داشبورد تفاعلي يهدف لتحليل فواتير المستشفيات وحالات خروج المرضى، وتقييم المبالغ غير المدفوعة والتكاليف لكل حالة طبية.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Excel</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/samah21moh-boop/Healthcare-Billing-Data-Analysis" target="_blank" rel="noopener noreferrer" class="btn">
+                            <i class="fab fa-github"></i> GitHub Repo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. مشروع HR Analytics Dashboard -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img
+                        src="https://raw.githubusercontent.com/samah21moh-boop/image/main/HR_Dashboard.png"
+                        alt="HR Analytics Dashboard"
+                    />
+                </div>
+                <div class="project-content">
+                    <h3>HR Analytics Dashboard</h3>
+                    <p>
+                        داشبورد تفاعلي لتحليل بيانات الموارد البشرية، يهدف إلى قياس معدلات تسرب الموظفين (Attrition Rate)، وتوزيع الموظفين النشطين حسب الأقسام والتخصصات الأكاديمية، بالإضافة إلى تحليل رواتب الوظائف المختلفة وتتبع التغيرات عبر السنوات.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">HR Analytics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/samah21moh-boop/power-bi-" target="_blank" rel="noopener noreferrer" class="btn">
+                            <i class="fab fa-github"></i> View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. مشروع Sales Dashboard -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img
+                        src="https://github.com/samah21moh-boop/image/blob/main/Sales%20Dashboard.png?raw=true"
+                        alt="Sales Analysis Dashboard"
+                    />
+                </div>
+                <div class="project-content">
+                    <h3>Sales Analysis Dashboard</h3>
+                    <p>
+                        داشبورد تفاعلي لتحليل المبيعات للفترة 2020 إلى 2022، يعرض إجمالي المبيعات ومتوسطها والأرباح حسب فئة المنتج والدولة والفترة الزمنية، مع خريطة لتوزيع المبيعات جغرافياً وفلاتر تفاعلية.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">DAX</span>
+                        <span class="tag">Data Modeling</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/samah21moh-boop/Sales-Dashboard-Power-BI" target="_blank" rel="noopener noreferrer" class="btn">
+                            <i class="fab fa-github"></i> GitHub Repo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="contact-me">
+            <h2>Contact Me</h2>
+            <p>Have a project in mind? I'd love to hear about it. Let's work together to bring your ideas to life.</p>
+            <div class="social-links">
+                <a href="https://github.com/samah21moh-boop" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:samah.21moh@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/966597722559" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Samah Mohammed - All Rights Reserved</p>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('theme-toggle');
+        const icon = btn.querySelector('i');
+        btn.onclick = () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.body.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+            }
+        };
+    </script>
+</body>
+</html>
