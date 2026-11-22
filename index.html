@@ -1,292 +1,349 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samah Mohammed | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #6432a8;
-            --primary-light: #8e5bd3;
-            --bg: #fcfaff;
-            --header-bg: #ffffff;
-            --card-bg: #ffffff;
-            --text: #332d41;
-            --secondary-bg: #f3efff;
-            --border: #eeeeee;
-            --shadow: rgba(100, 50, 168, 0.1);
-            .project-image img {
-  max-width: 100%; 
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samah Mohammed | Data Analytics Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        [data-theme="dark"] {
-            --bg: #0d0b14;
-            --header-bg: #161421;
-            --card-bg: #1a1726;
-            --text: #e0dced;
-            --secondary-bg: #241f3a;
-            --border: #2d2845;
-            --shadow: rgba(0, 0, 0, 0.5);
-        }
+    body {
+      background-color: #121417;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* شريط التنقل */
+    header {
+      background-color: #16191d;
+      border-bottom: 1px solid #2d3239;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            transition: background 0.4s, color 0.4s;
-            line-height: 1.6;
-        }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
 
-        /* Header */
-        header {
-            text-align: center;
-            padding: 80px 20px 40px;
-            background-color: var(--header-bg);
-            border-bottom: 1px solid var(--border);
-            position: relative;
-        }
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: #f9fafb;
+      text-decoration: none;
+    }
 
-        .logo-container {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 20px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px var(--shadow);
-            border: 2px solid var(--primary);
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
 
-        .hello-text { font-size: 1.4rem; color: var(--primary); font-weight: 400; display: block; }
-        .name-text { font-size: 2.8rem; font-weight: 700; color: var(--text); margin-bottom: 20px; }
+    nav a {
+      color: #d1d5db;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
 
-        .social-links { display: flex; justify-content: center; gap: 15px; margin: 15px 0; }
-        .social-links a {
-            font-size: 18px; color: var(--primary); background: var(--secondary-bg);
-            width: 42px; height: 42px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; transition: 0.3s;
-        }
-        .social-links a:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+    nav a:hover {
+      color: #ffffff;
+    }
 
-        /* Sections */
-        .container { max-width: 850px; margin: auto; padding: 40px 20px; }
-        section {
-            background-color: var(--card-bg); padding: 35px; border-radius: 20px;
-            margin-bottom: 30px; border: 1px solid var(--border);
-            box-shadow: 0 5px 15px var(--shadow);
-        }
+    /* القسم التعريفي */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px 30px;
+    }
 
-        h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
-        h2::after { content: ""; height: 1px; flex: 1; background: var(--border); }
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
 
-        .cv-btn {
-            display: inline-flex; align-items: center; gap: 10px;
-            background-color: var(--primary); color: white !important;
-            padding: 14px 35px; text-decoration: none; border-radius: 50px;
-            font-weight: 600; transition: 0.3s;
-        }
-        .cv-btn:hover { transform: scale(1.05); background: var(--primary-light); }
+    .hero p {
+      color: #9ca3af;
+      max-width: 720px;
+      font-size: 15px;
+      direction: rtl;
+      text-align: right;
+    }
 
-        .skills-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px;
-        }
-        .skill-item {
-            background: var(--secondary-bg); padding: 20px; border-radius: 15px; text-align: center;
-        }
-        .skill-item i { font-size: 1.6rem; color: var(--primary); margin-bottom: 10px; display: block; }
+    /* قسم المشاريع */
+    .portfolio-section {
+      padding: 40px 20px 60px;
+    }
 
-        .project-card {
-            background: var(--secondary-bg); padding: 20px; border-radius: 15px; margin-bottom: 15px;
-            border-right: 5px solid var(--primary);
-        }
+    .section-title {
+      max-width: 1200px;
+      margin: 0 auto 30px;
+      font-size: 26px;
+      font-weight: 700;
+      color: #f9fafb;
+    }
 
-        .contact-me { background: var(--primary) !important; color: white; text-align: center; }
-        .contact-me h2 { color: white; justify-content: center; }
-        .contact-me h2::after { display: none; }
-        .contact-me .social-links a { background: rgba(255,255,255,0.2); color: white; }
-        .contact-me .social-links a:hover { background: white; color: var(--primary); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .theme-toggle {
-            position: absolute; left: 20px; top: 20px;
-            background: var(--secondary-bg); color: var(--primary);
-            border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-        }
+    .project-card {
+      background-color: #1a1d21;
+      border: 1px solid #2d3239;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
 
-        footer { text-align: center; padding: 40px; font-size: 0.9rem; opacity: 0.6; }
-    </style>
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: #4b5563;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 210px;
+      background-color: #ffffff;
+      padding: 8px;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .project-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .project-content h3 {
+      margin: 0 0 12px;
+      font-size: 19px;
+      color: #f9fafb;
+    }
+
+    .project-content p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #9ca3af;
+      margin: 0 0 20px;
+      direction: rtl;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      border: 1px solid #4b5563;
+      color: #e5e7eb;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .project-links .btn {
+      display: inline-block;
+      background-color: #374151;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+    }
+
+    .project-links .btn:hover {
+      background-color: #4b5563;
+    }
+
+    /* التذييل والتواصل */
+    footer {
+      background-color: #16191d;
+      border-top: 1px solid #2d3239;
+      padding: 36px 20px;
+      text-align: center;
+    }
+
+    footer h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #f9fafb;
+    }
+
+    footer p {
+      color: #9ca3af;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #4b5563;
+      padding-bottom: 2px;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
-        
-        <div class="logo-container">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width: 140px;">
-                <circle cx="100" cy="100" r="95" fill="none" stroke="#6432a8" stroke-width="1" stroke-dasharray="4,2"/>
-                <text x="100" y="110" font-family="serif" font-size="90" fill="#6432a8" text-anchor="middle" font-style="italic">S</text>
-                <text x="100" y="150" font-family="Cairo" font-size="10" fill="#332d41" text-anchor="middle" letter-spacing="2" font-weight="bold">SAMAH MOHAMMED</text>
-                <path d="M70 125 Q 100 100, 130 125" stroke="#6432a8" stroke-width="1" fill="none" opacity="0.4"/>
-            </svg>
-        </div>
-        
-        <div class="welcome-text">
-            <span class="hello-text">Hello,</span>
-            <h1 class="name-text">Samah Mohammed</h1>
-        </div>
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">Samah Mohammed</a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <div class="social-links">
-            <a href="https://github.com/samah21moh-boop" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="mailto:samah.21moh@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://wa.me/966597722559" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <section id="about" class="hero">
+    <h1>Data Analytics Portfolio</h1>
+    <p>
+      مهتمة بتحليل البيانات وبناء لوحات المعلومات التفاعلية باستخدام Power BI و SQL و Excel، مع مشاريع تطبيقية في تحليل المبيعات، الموارد البشرية، وفواتير الرعاية الصحية.
+    </p>
+  </section>
+
+  <section id="projects" class="portfolio-section">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid">
+
+      <!-- 1. مشروع تحليل بيانات المستشفيات -->
+      <div class="project-card">
+        <div class="project-image">
+          <img
+            src="https://raw.githubusercontent.com/samah21moh-boop/image/main/Healthcare_Billing_Dashboard_Overview.png.png"
+            alt="Healthcare Billing Data Analysis Dashboard"
+          />
         </div>
-    </header>
-
-    <div class="container">
-        <section>
-            <h2>About Me</h2>
-            <p>Data Analyst with a passion to uncover the mysteries of data. I believe that data is the best source of guidance for any business decision and I always aim to present data in a way that is easy to understand, in order to reach meaningful conclusions.</p>
-        </section>
-
-        <div style="text-align: center; margin-bottom: 40px;">
-            <a href="https://drive.google.com/file/d/14bgzBDAcOiLd4_br1J06nI0Z33oNadrR/view?usp=drive_link" target="_blank" class="cv-btn">
-                <i class="fas fa-download"></i> Download My CV
+        <div class="project-content">
+          <h3>Healthcare Billing Data Analysis</h3>
+          <p>
+            داشبورد تفاعلي يهدف لتحليل فواتير المستشفيات وحالات خروج المرضى، وتقييم المبالغ غير المدفوعة والتكاليف لكل حالة طبية.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Excel</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/samah21moh-boop/Healthcare-Billing-Data-Analysis" target="_blank" rel="noopener noreferrer" class="btn">
+              GitHub Repo
             </a>
+          </div>
         </div>
+      </div>
 
-        <section>
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item"><i class="fas fa-file-excel"></i><h4>Excel</h4></div>
-                <div class="skill-item"><i class="fas fa-database"></i><h4>SQL</h4></div>
-                <div class="skill-item"><i class="fab fa-python"></i><h4>Python</h4></div>
-                <div class="skill-item"><i class="fas fa-chart-bar"></i><h4>Power BI</h4></div>
-            </div>
-        </section>
+      <!-- 2. مشروع HR Analytics Dashboard -->
+      <div class="project-card">
+        <div class="project-image">
+          <img
+            src="https://raw.githubusercontent.com/samah21moh-boop/image/main/HR_Dashboard.png"
+            alt="HR Analytics Dashboard"
+          />
+        </div>
+        <div class="project-content">
+          <h3>HR Analytics Dashboard</h3>
+          <p>
+            داشبورد تفاعلي لتحليل بيانات الموارد البشرية، يهدف إلى قياس معدلات تسرب الموظفين (Attrition Rate)، وتوزيع الموظفين النشطين حسب الأقسام والتخصصات الأكاديمية، بالإضافة إلى تحليل رواتب الوظائف المختلفة وتتبع التغيرات عبر السنوات.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">HR Analytics</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/samah21moh-boop/power-bi-" target="_blank" rel="noopener noreferrer" class="btn">
+              View Project
+            </a>
+          </div>
+        </div>
+      </div>
 
-        <section>
-            <h2>Projects</h2>
-    
-            <!-- مشروع تحليل بيانات المستشفيات -->
-<div class="project-card">
-  <!-- صورة الداشبورد المباشرة -->
-<img 
-  src="https://raw.githubusercontent.com/samah21moh-boop/image/main/Healthcare_Billing_Dashboard_Overview.png.png" 
-  alt="Healthcare Billing Data Analysis Dashboard"
-  style="width: 100% !important; max-width: 100% !important; height: auto !important; object-fit: contain !important; border-radius: 8px;"
-/>
-  <div class="project-content">
-    <h3>Healthcare Billing Data Analysis</h3>
-    
-    <p>
-      داشبورد تفاعلي يهدف لتحليل فواتير المستشفيات وحالات خروج المرضى، وتقييم المبالغ غير المدفوعة والتكاليف لكل حالة طبية.
-    </p>
-    <div class="project-tags">
-      <span class="tag">Power BI</span>
-      <span class="tag">SQL</span>
-      <span class="tag">Excel</span>
+      <!-- 3. مشروع Sales Dashboard -->
+      <div class="project-card">
+        <div class="project-image">
+          <img
+            src="https://github.com/samah21moh-boop/image/blob/main/Sales%20Dashboard.png?raw=true"
+            alt="Sales Analysis Dashboard"
+          />
+        </div>
+        <div class="project-content">
+          <h3>Sales Analysis Dashboard</h3>
+          <p>
+            داشبورد تفاعلي لتحليل المبيعات للفترة 2020 إلى 2022، يعرض إجمالي المبيعات ومتوسطها والأرباح حسب فئة المنتج والدولة والفترة الزمنية، مع خريطة لتوزيع المبيعات جغرافياً وفلاتر تفاعلية.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">DAX</span>
+            <span class="tag">Data Modeling</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/samah21moh-boop/Sales-Dashboard-Power-BI" target="_blank" rel="noopener noreferrer" class="btn">
+              GitHub Repo
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="project-links">
-      <a href="https://github.com/samah21moh-boop/Healthcare-Billing-Data-Analysis" target="_blank" class="btn">
-        GitHub Repo
-      </a>
-    </div>
-  </div>
-</div>
+  </section>
 
-   <!-- HR Analytics Dashboard Project -->
-<div class="project-card">
-  <div class="project-image">
-    <!-- رابط الصورة المباشر والمنقح -->
-    <img src="https://raw.githubusercontent.com/samah21moh-boop/image/main/HR_Dashboard.png" alt="HR Analytics Dashboard">
-  </div>
-  
-  <div class="project-content">
-    <h3>HR Analytics Dashboard</h3>
-    <p>
-      داشبورد تفاعلي لتحليل بيانات الموارد البشرية، يهدف إلى قياس معدلات تسرب الموظفين (Attrition Rate)، 
-      وتوزيع الموظفين النشطين حسب الأقسام والتخصصات الأكاديمية، بالإضافة إلى تحليل رواتب الوظائف المختلفة وتتبع التغيرات عبر السنوات.
-    </p>
-      
-    <div class="tech-stack">
-      <span>Power BI</span>
-      <span>Data Visualization</span>
-      <span>HR Analytics</span>
+  <footer id="contact">
+    <h2>Contact</h2>
+    <p>Riyadh, Saudi Arabia</p>
+    <div class="footer-links">
+      <a href="https://github.com/samah21moh-boop" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
+  </footer>
 
-    <div class="project-links">
-      <a href="https://github.com/samah21moh-boop/power-bi-" target="_blank" rel="noopener noreferrer">View Project</a>
-    </div>
-  </div>
-</div>
-
-<!-- Sales Dashboard Project -->
-<div class="project-card">
-  <img
-    src="https://raw.githubusercontent.com/samah21moh-boop/image/main/Sales_Dashboard.png"
-    alt="Sales Analysis Dashboard"
-    style="width: 100% !important; max-width: 100% !important; height: auto !important; object-fit: contain !important; border-radius: 8px;"
-  />
-  <div class="project-content">
-    <h3>Sales Analysis Dashboard</h3>
-    <p>
-      داشبورد تفاعلي لتحليل المبيعات للفترة 2020 إلى 2022، يعرض إجمالي المبيعات ومتوسطها والأرباح حسب فئة المنتج والدولة والفترة الزمنية، مع خريطة لتوزيع المبيعات جغرافياً وفلاتر تفاعلية.
-    </p>
-    <div class="project-tags">
-      <span class="tag">Power BI</span>
-      <span class="tag">DAX</span>
-      <span class="tag">Data Modeling</span>
-    </div>
-    <div class="project-links">
-      <a href="https://github.com/samah21moh-boop/Sales-Dashboard-Power-BI" target="_blank" class="btn">
-        GitHub Repo
-      </a>
-    </div>
-  </div>
-</div>
-        </section>
-
-        <section class="contact-me">
-            <h2>Contact Me</h2>
-            <p>Have a project in mind? I'd love to hear about it. Let's work together to bring your ideas to life.</p>
-            <div class="social-links">
-                <a href="https://github.com/samah21moh-boop" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="mailto:samah.21moh@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/samah-alhumaidi-061179205" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/966597722559" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <p>© 2026 Samah Mohammed - All Rights Reserved</p>
-    </footer>
-
-    <script>
-        const btn = document.getElementById('theme-toggle');
-        const icon = btn.querySelector('i');
-        btn.onclick = () => {
-            const isDark = document.body.getAttribute('data-theme') === 'dark';
-            if (isDark) {
-                document.body.removeAttribute('data-theme');
-                icon.className = 'fas fa-moon';
-            } else {
-                document.body.setAttribute('data-theme', 'dark');
-                icon.className = 'fas fa-sun';
-            }
-        }
-    </script>
 </body>
 </html>
