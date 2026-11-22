@@ -1,349 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samah Mohammed | Data Analytics Portfolio</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samah Mohammed | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6432a8;
+            --primary-light: #8e5bd3;
+            --bg: #fcfaff;
+            --header-bg: #ffffff;
+            --card-bg: #ffffff;
+            --text: #332d41;
+            --secondary-bg: #f3efff;
+            --border: #eeeeee;
+            --shadow: rgba(100, 50, 168, 0.1);
+        }
 
-    body {
-      background-color: #121417;
-      color: #ffffff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-    }
+        [data-theme="dark"] {
+            --bg: #0d0b14;
+            --header-bg: #161421;
+            --card-bg: #1a1726;
+            --text: #e0dced;
+            --secondary-bg: #241f3a;
+            --border: #2d2845;
+            --shadow: rgba(0, 0, 0, 0.5);
+        }
 
-    /* شريط التنقل */
-    header {
-      background-color: #16191d;
-      border-bottom: 1px solid #2d3239;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background 0.4s, color 0.4s;
+            line-height: 1.6;
+        }
 
-    .brand {
-      font-size: 18px;
-      font-weight: 700;
-      color: #f9fafb;
-      text-decoration: none;
-    }
+        /* Header */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 24px;
-    }
+        .logo-container {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px var(--shadow);
+            border: 2px solid var(--primary);
+        }
 
-    nav a {
-      color: #d1d5db;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s ease;
-    }
+        .hello-text { font-size: 1.4rem; color: var(--primary); font-weight: 400; display: block; }
+        .name-text { font-size: 2.8rem; font-weight: 700; color: var(--text); margin-bottom: 20px; }
 
-    nav a:hover {
-      color: #ffffff;
-    }
+        .social-links { display: flex; justify-content: center; gap: 15px; margin: 15px 0; }
+        .social-links a {
+            font-size: 18px; color: var(--primary); background: var(--secondary-bg);
+            width: 42px; height: 42px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.3s;
+        }
+        .social-links a:hover { background: var(--primary); color: white; transform: translateY(-3px); }
 
-    /* القسم التعريفي */
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 20px 30px;
-    }
+        /* Sections */
+        .container { max-width: 850px; margin: auto; padding: 40px 20px; }
+        section {
+            background-color: var(--card-bg); padding: 35px; border-radius: 20px;
+            margin-bottom: 30px; border: 1px solid var(--border);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
 
-    .hero h1 {
-      font-size: 32px;
-      margin-bottom: 12px;
-      color: #ffffff;
-    }
+        h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ""; height: 1px; flex: 1; background: var(--border); }
 
-    .hero p {
-      color: #9ca3af;
-      max-width: 720px;
-      font-size: 15px;
-      direction: rtl;
-      text-align: right;
-    }
+        .cv-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background-color: var(--primary); color: white !important;
+            padding: 14px 35px; text-decoration: none; border-radius: 50px;
+            font-weight: 600; transition: 0.3s;
+        }
+        .cv-btn:hover { transform: scale(1.05); background: var(--primary-light); }
 
-    /* قسم المشاريع */
-    .portfolio-section {
-      padding: 40px 20px 60px;
-    }
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px;
+        }
+        .skill-item {
+            background: var(--secondary-bg); padding: 20px; border-radius: 15px; text-align: center;
+        }
+        .skill-item i { font-size: 1.6rem; color: var(--primary); margin-bottom: 10px; display: block; }
 
-    .section-title {
-      max-width: 1200px;
-      margin: 0 auto 30px;
-      font-size: 26px;
-      font-weight: 700;
-      color: #f9fafb;
-    }
+        /* Projects - موحّد ومتناسق مع الثيم البنفسجي */
+        .project-card {
+            background: var(--secondary-bg);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            border-right: 5px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
 
-    .project-card {
-      background-color: #1a1d21;
-      border: 1px solid #2d3239;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
 
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: #4b5563;
-    }
+        .project-image {
+            width: 100%;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+        }
 
-    .project-image {
-      width: 100%;
-      height: 210px;
-      background-color: #ffffff;
-      padding: 8px;
-    }
+        .project-image img {
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
 
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 6px;
-    }
+        .project-content h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            direction: ltr;
+            text-align: right;
+        }
 
-    .project-content {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      text-align: center;
-    }
+        .project-content p {
+            color: var(--text);
+            font-size: 0.98rem;
+            margin-bottom: 16px;
+        }
 
-    .project-content h3 {
-      margin: 0 0 12px;
-      font-size: 19px;
-      color: #f9fafb;
-    }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
 
-    .project-content p {
-      font-size: 14px;
-      line-height: 1.65;
-      color: #9ca3af;
-      margin: 0 0 20px;
-      direction: rtl;
-      flex-grow: 1;
-    }
+        .tag {
+            background-color: var(--card-bg);
+            color: var(--primary);
+            border: 1px solid var(--primary-light);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
 
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
+        .project-links .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary);
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 9px 22px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
 
-    .tag {
-      border: 1px solid #4b5563;
-      color: #e5e7eb;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-    }
+        .project-links .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
 
-    .project-links .btn {
-      display: inline-block;
-      background-color: #374151;
-      color: #ffffff;
-      text-decoration: none;
-      padding: 10px 22px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      transition: background-color 0.2s ease;
-    }
-
-    .project-links .btn:hover {
-      background-color: #4b5563;
-    }
-
-    /* التذييل والتواصل */
-    footer {
-      background-color: #16191d;
-      border-top: 1px solid #2d3239;
-      padding: 36px 20px;
-      text-align: center;
-    }
-
-    footer h2 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #f9fafb;
-    }
-
-    footer p {
-      color: #9ca3af;
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #e5e7eb;
-      text-decoration: none;
-      font-size: 14px;
-      border-bottom: 1px solid #4b5563;
-      padding-bottom: 2px;
-    }
-
-    .footer-links a:hover {
-      color: #ffffff;
-      border-color: #ffffff;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="nav-container">
-      <a href="#" class="brand">Samah Mohammed</a>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <section id="about" class="hero">
-    <h1>Data Analytics Portfolio</h1>
-    <p>
-      مهتمة بتحليل البيانات وبناء لوحات المعلومات التفاعلية باستخدام Power BI و SQL و Excel، مع مشاريع تطبيقية في تحليل المبيعات، الموارد البشرية، وفواتير الرعاية الصحية.
-    </p>
-  </section>
-
-  <section id="projects" class="portfolio-section">
-    <h2 class="section-title">Projects</h2>
-
-    <div class="projects-grid">
-
-      <!-- 1. مشروع تحليل بيانات المستشفيات -->
-      <div class="project-card">
-        <div class="project-image">
-          <img
-            src="https://raw.githubusercontent.com/samah21moh-boop/image/main/Healthcare_Billing_Dashboard_Overview.png.png"
-            alt="Healthcare Billing Data Analysis Dashboard"
-          />
-        </div>
-        <div class="project-content">
-          <h3>Healthcare Billing Data Analysis</h3>
-          <p>
-            داشبورد تفاعلي يهدف لتحليل فواتير المستشفيات وحالات خروج المرضى، وتقييم المبالغ غير المدفوعة والتكاليف لكل حالة طبية.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Power BI</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Excel</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/samah21moh-boop/Healthcare-Billing-Data-Analysis" target="_blank" rel="noopener noreferrer" class="btn">
-              GitHub Repo
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. مشروع HR Analytics Dashboard -->
-      <div class="project-card">
-        <div class="project-image">
-          <img
-            src="https://raw.githubusercontent.com/samah21moh-boop/image/main/HR_Dashboard.png"
-            alt="HR Analytics Dashboard"
-          />
-        </div>
-        <div class="project-content">
-          <h3>HR Analytics Dashboard</h3>
-          <p>
-            داشبورد تفاعلي لتحليل بيانات الموارد البشرية، يهدف إلى قياس معدلات تسرب الموظفين (Attrition Rate)، وتوزيع الموظفين النشطين حسب الأقسام والتخصصات الأكاديمية، بالإضافة إلى تحليل رواتب الوظائف المختلفة وتتبع التغيرات عبر السنوات.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Power BI</span>
-            <span class="tag">Data Visualization</span>
-            <span class="tag">HR Analytics</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/samah21moh-boop/power-bi-" target="_blank" rel="noopener noreferrer" class="btn">
-              View Project
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. مشروع Sales Dashboard -->
-      <div class="project-card">
-        <div class="project-image">
-          <img
-            src="https://github.com/samah21moh-boop/image/blob/main/Sales%20Dashboard.png?raw=true"
-            alt="Sales Analysis Dashboard"
-          />
-        </div>
-        <div class="project-content">
-          <h3>Sales Analysis Dashboard</h3>
-          <p>
-            داشبورد تفاعلي لتحليل المبيعات للفترة 2020 إلى 2022، يعرض إجمالي المبيعات ومتوسطها والأرباح حسب فئة المنتج والدولة والفترة الزمنية، مع خريطة لتوزيع المبيعات جغرافياً وفلاتر تفاعلية.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Power BI</span>
-            <span class="tag">DAX</span>
-            <span class="tag">Data Modeling</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/samah21moh-boop/Sales-Dashboard-Power-BI" target="_blank" rel="noopener noreferrer" class="btn">
-              GitHub Repo
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <footer id="contact">
-    <h2>Contact</h2>
-    <p>Riyadh, Saudi Arabia</p>
-    <div class="footer-links">
-      <a href="https://github.com/samah21moh-boop" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </div>
-  </footer>
-
-</body>
-</html>
+        .contact-me { background: var(--primary) !important; color: white; text-align: center; }
+        .contact-me h2 { color: white; justify-content: center; }
+        .contact-me h2::after { display: none; }
+        .contact-me .social-links a { background: rgba(255,255,255,0.2); color: white; }
+        .contact-me .social-
